@@ -1,0 +1,48 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title={`关于 · ${SITE_TITLE}`} description="关于我和这个博客" />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>关于</h1>
+			<p>
+				你好，我是 KinC，做产品和项目管理。
+			</p>
+			<p>
+				这一段留给你自己写：做过什么行业、什么规模的团队、什么类型的产品。
+				编辑 <code>src/pages/about.astro</code> 就能改。
+			</p>
+
+			<h2>这个博客写什么</h2>
+			<ul>
+				<li><strong>需求与发现</strong>：用户访谈、需求收敛、怎么判断一个需求值不值得做</li>
+				<li><strong>优先级与路线图</strong>：排期取舍、路线图怎么写才不会三个月后作废</li>
+				<li><strong>交付与执行</strong>：迭代节奏、风险管理、延期了怎么办</li>
+				<li><strong>协作与沟通</strong>：跟研发/设计/老板对齐，写文档，开会</li>
+				<li><strong>复盘</strong>：做砸的项目比做成的更值得写</li>
+			</ul>
+
+			<h2>写作原则</h2>
+			<p>
+				每篇都尽量有具体场景、具体做法、具体结果。
+				没验证过的方法论我不写，写了会标明是猜想。
+			</p>
+
+			<h2>联系我</h2>
+			<p>
+				邮件：<a href="mailto:kongaxing@gmail.com">kongaxing@gmail.com</a>
+				&middot; 订阅 <a href="/rss.xml">RSS</a>
+			</p>
+		</main>
+		<Footer />
+	</body>
+</html>

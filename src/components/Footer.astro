@@ -1,0 +1,49 @@
+---
+import { AUTHOR, SOCIAL_LINKS } from '../consts';
+import SocialIcon from './SocialIcon.astro';
+const year = new Date().getFullYear();
+---
+
+<footer>
+	<div class="social">
+		{
+			SOCIAL_LINKS.map((link) => (
+				<a
+					href={link.href}
+					target={link.href.startsWith('http') ? '_blank' : undefined}
+					rel={link.href.startsWith('http') ? 'noopener' : undefined}
+				>
+					<span class="sr-only">{link.label}</span>
+					<SocialIcon icon={link.icon} />
+				</a>
+			))
+		}
+	</div>
+	<p>&copy; {year} {AUTHOR}</p>
+</footer>
+
+<style>
+	footer {
+		border-top: 1px solid var(--border);
+		padding: 2rem 1.25rem 3rem;
+		text-align: center;
+		color: var(--text-muted);
+		font-size: 0.85rem;
+	}
+	footer p {
+		margin: 0;
+	}
+	.social {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		margin-bottom: 0.9rem;
+	}
+	.social a {
+		display: flex;
+		color: var(--text-muted);
+	}
+	.social a:hover {
+		color: var(--accent);
+	}
+</style>

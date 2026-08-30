@@ -1,0 +1,69 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import PostList from '../components/PostList.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getPublishedPosts } from '../lib/posts';
+
+const posts = (await getPublishedPosts()).slice(0, 5);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="intro">
+				<h1>产品 & 项目管理的实战笔记</h1>
+				<p>
+					我是 KinC。这里写我在真实项目里踩过的坑和总结出的方法：
+					需求怎么收敛、优先级怎么排、路线图怎么不变成一纸空文、
+					跨团队协作里那些教科书不会告诉你的部分。
+				</p>
+				<p>
+					不谈虚的框架，只写能直接拿去用的东西。<a href="/about">关于我 →</a>
+				</p>
+			</section>
+
+			<section class="latest">
+				<div class="section-head">
+					<h2>最新文章</h2>
+					<a href="/blog">全部 →</a>
+				</div>
+				<PostList posts={posts} />
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.intro {
+		padding-bottom: 1rem;
+	}
+	.latest {
+		margin-top: 2.5rem;
+	}
+	.section-head {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		border-bottom: 1px solid var(--border);
+		padding-bottom: 0.5rem;
+	}
+	.section-head h2 {
+		margin: 0;
+		font-size: 1.1rem;
+	}
+	.section-head a {
+		font-size: 0.85rem;
+		color: var(--text-muted);
+	}
+	.section-head a:hover {
+		color: var(--accent);
+	}
+</style>

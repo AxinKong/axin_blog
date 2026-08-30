@@ -1,0 +1,202 @@
+/*
+  基础样式源自 Bear Blog 的默认 CSS，已针对中日文排版与暗色模式重写。
+  https://github.com/HermanMartinus/bearblog — License MIT
+*/
+
+:root {
+	color-scheme: light dark;
+
+	--font-sans:
+		-apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans',
+		'Noto Sans CJK JP', 'Source Han Sans SC', 'PingFang SC',
+		'Microsoft YaHei', sans-serif;
+	--font-mono:
+		ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+	--bg: #fdfdfc;
+	--bg-subtle: #f4f4f2;
+	--text: #22252b;
+	--text-muted: #6b7280;
+	--border: #e4e4e1;
+	--accent: #b4451f;
+	--accent-soft: rgba(180, 69, 31, 0.1);
+	--code-bg: #f4f4f2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #16171a;
+		--bg-subtle: #1e2024;
+		--text: #e3e3e0;
+		--text-muted: #9a9a95;
+		--border: #2c2e33;
+		--accent: #f08a5d;
+		--accent-soft: rgba(240, 138, 93, 0.14);
+		--code-bg: #1e2024;
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: var(--bg);
+	color: var(--text);
+	font-family: var(--font-sans);
+	font-size: 18px;
+	line-height: 1.8;
+	text-align: left;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	-webkit-font-smoothing: antialiased;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	flex: 1;
+	width: 100%;
+	max-width: 720px;
+	margin: 0 auto;
+	padding: 3rem 1.25rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 2.5rem 0 1rem;
+	color: var(--text);
+	line-height: 1.35;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+h1 { font-size: 2rem; margin-top: 0; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.1rem; }
+
+p {
+	margin: 0 0 1.2em;
+}
+
+a {
+	color: var(--accent);
+	text-decoration: none;
+	text-underline-offset: 3px;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+strong,
+b {
+	font-weight: 700;
+}
+
+ul,
+ol {
+	padding-left: 1.4em;
+}
+li {
+	margin-bottom: 0.4em;
+}
+
+img,
+video {
+	max-width: 100%;
+	height: auto;
+	border-radius: 10px;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid var(--border);
+	margin: 2.5rem 0;
+}
+
+blockquote {
+	margin: 1.5em 0;
+	padding: 0.2em 0 0.2em 1.2em;
+	border-left: 3px solid var(--accent);
+	color: var(--text-muted);
+}
+
+code {
+	font-family: var(--font-mono);
+	font-size: 0.88em;
+	padding: 0.15em 0.4em;
+	background: var(--code-bg);
+	border-radius: 4px;
+}
+
+pre {
+	padding: 1.1em 1.2em;
+	border-radius: 10px;
+	overflow-x: auto;
+	font-size: 0.85em;
+	line-height: 1.6;
+	border: 1px solid var(--border);
+}
+pre > code {
+	all: unset;
+	font-family: var(--font-mono);
+}
+
+/* Shiki 双主题：跟随系统切换代码块配色 */
+@media (prefers-color-scheme: dark) {
+	.astro-code,
+	.astro-code span {
+		color: var(--shiki-dark) !important;
+		background-color: var(--shiki-dark-bg) !important;
+	}
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.95em;
+	margin: 1.5em 0;
+	display: block;
+	overflow-x: auto;
+}
+th,
+td {
+	border: 1px solid var(--border);
+	padding: 0.5em 0.75em;
+	text-align: left;
+}
+th {
+	background: var(--bg-subtle);
+}
+
+@media (max-width: 720px) {
+	body {
+		font-size: 17px;
+	}
+	main {
+		padding: 2rem 1.1rem;
+	}
+	h1 { font-size: 1.7rem; }
+}
+
+.sr-only {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}

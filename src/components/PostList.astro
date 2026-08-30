@@ -1,0 +1,87 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+	posts: CollectionEntry<'blog'>[];
+}
+const { posts } = Astro.props;
+---
+
+<ul class="post-list">
+	{
+		posts.map((post) => (
+			<li>
+				<a class="row" href={`/blog/${post.id}/`}>
+					<span class="title">
+						{post.data.title}
+						{post.data.draft && <span class="draft">草稿</span>}
+					</span>
+					<span class="date">
+						<FormattedDate date={post.data.pubDate} />
+					</span>
+				</a>
+				{post.data.description && <p class="desc">{post.data.description}</p>}
+			</li>
+		))
+	}
+</ul>
+{posts.length === 0 && <p class="empty">还没有文章。</p>}
+
+<style>
+	.post-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.post-list li {
+		padding: 1.1rem 0;
+		border-bottom: 1px solid var(--border);
+		margin: 0;
+	}
+	.row {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1rem;
+		color: var(--text);
+	}
+	.row:hover {
+		text-decoration: none;
+	}
+	.row:hover .title {
+		color: var(--accent);
+	}
+	.title {
+		font-weight: 600;
+		line-height: 1.5;
+	}
+	.draft {
+		font-size: 0.7em;
+		font-weight: 500;
+		margin-left: 0.5em;
+		padding: 0.1em 0.45em;
+		border-radius: 4px;
+		background: var(--accent-soft);
+		color: var(--accent);
+		vertical-align: middle;
+	}
+	.date {
+		flex-shrink: 0;
+		font-size: 0.82rem;
+		color: var(--text-muted);
+		font-variant-numeric: tabular-nums;
+	}
+	.desc {
+		margin: 0.35rem 0 0;
+		font-size: 0.9rem;
+		color: var(--text-muted);
+		line-height: 1.6;
+	}
+	@media (max-width: 560px) {
+		.row {
+			flex-direction: column;
+			gap: 0.2rem;
+		}
+	}
+</style>

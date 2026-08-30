@@ -1,0 +1,81 @@
+---
+import { NAV_LINKS, SITE_TITLE, SOCIAL_LINKS } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+import SocialIcon from './SocialIcon.astro';
+---
+
+<header>
+	<nav>
+		<a class="brand" href="/">{SITE_TITLE}</a>
+		<div class="links">
+			{NAV_LINKS.map((link) => <HeaderLink href={link.href}>{link.label}</HeaderLink>)}
+		</div>
+		<div class="social">
+			{
+				SOCIAL_LINKS.map((link) => (
+					<a
+						href={link.href}
+						target={link.href.startsWith('http') ? '_blank' : undefined}
+						rel={link.href.startsWith('http') ? 'noopener' : undefined}
+					>
+						<span class="sr-only">{link.label}</span>
+						<SocialIcon icon={link.icon} />
+					</a>
+				))
+			}
+		</div>
+	</nav>
+</header>
+
+<style>
+	header {
+		border-bottom: 1px solid var(--border);
+		background: var(--bg);
+	}
+	nav {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 0.9rem 1.25rem;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+	.brand {
+		font-weight: 700;
+		font-size: 1.05rem;
+		letter-spacing: 0.02em;
+		color: var(--text);
+	}
+	.brand:hover {
+		text-decoration: none;
+		color: var(--accent);
+	}
+	.links {
+		display: flex;
+		gap: 1rem;
+		margin-left: auto;
+		font-size: 0.95rem;
+	}
+	.social {
+		display: flex;
+		gap: 0.7rem;
+		padding-left: 1rem;
+		border-left: 1px solid var(--border);
+	}
+	.social a {
+		display: flex;
+		color: var(--text-muted);
+	}
+	.social a:hover {
+		color: var(--accent);
+	}
+	@media (max-width: 600px) {
+		.social {
+			display: none;
+		}
+		.links {
+			gap: 0.8rem;
+			font-size: 0.9rem;
+		}
+	}
+</style>
