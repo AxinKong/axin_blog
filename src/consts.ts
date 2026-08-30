@@ -15,5 +15,5 @@ export const NAV_LINKS = [
 export const SOCIAL_LINKS = [
 	{ href: 'https://github.com/', label: 'GitHub', icon: 'github' },
 	{ href: 'mailto:kongaxing@gmail.com', label: 'Email', icon: 'mail' },
-	{ href: '/rss.xml', label: 'RSS', icon: 'rss' },
+	{ href: 'https://www.linkedin.com/in/axin-k-15a151196/', label: 'LinkedIn', icon: 'linkedin' },
 ];
