@@ -1,0 +1,105 @@
+---
+import { NEWSLETTER } from '../consts';
+
+interface Props {
+	compact?: boolean;
+}
+const { compact = false } = Astro.props;
+
+const name = NEWSLETTER.publication.trim();
+const show = NEWSLETTER.enabled && name !== '';
+const home = `https://${name}.substack.com`;
+const embedSrc = `${home}/embed`;
+---
+
+{
+	show && (
+		<aside class:list={['sub', { compact }]}>
+			<p class="sub-title">{NEWSLETTER.title}</p>
+			{NEWSLETTER.note && <p class="sub-note">{NEWSLETTER.note}</p>}
+
+			{NEWSLETTER.mode === 'embed' ? (
+				<div class="frame">
+					{/* Substack 官方内嵌表单。加载失败时下面的直达链接仍可用 */}
+					<iframe
+						src={embedSrc}
+						title="邮件订阅"
+						width="100%"
+						height="150"
+						frameborder="0"
+						scrolling="no"
+						loading="lazy"
+					/>
+				</div>
+			) : (
+				<a class="btn" href={home} target="_blank" rel="noopener">
+					{NEWSLETTER.buttonText}
+				</a>
+			)}
+
+			<p class="fallback">
+				表单加载不出来？
+				<a href={home} target="_blank" rel="noopener">
+					直接去订阅页
+				</a>
+			</p>
+		</aside>
+	)
+}
+
+<style>
+	.sub {
+		margin-top: 3.5rem;
+		padding: 1.8rem 1.5rem;
+		border: 1px solid var(--border);
+		border-radius: 12px;
+		background: var(--bg-subtle);
+		text-align: center;
+	}
+	.sub.compact {
+		margin-top: 2.5rem;
+		padding: 1.4rem 1.2rem;
+	}
+	.sub-title {
+		margin: 0 0 0.4rem;
+		font-weight: 700;
+		font-size: 1.05rem;
+	}
+	.sub-note {
+		margin: 0 auto 1.2rem;
+		max-width: 34em;
+		font-size: 0.88rem;
+		line-height: 1.7;
+		color: var(--text-muted);
+	}
+	/* Substack 的表单底色固定是白的，包一层白卡片让它看起来是有意为之 */
+	.frame {
+		max-width: 460px;
+		margin: 0 auto;
+		background: #fff;
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		overflow: hidden;
+	}
+	.frame iframe {
+		display: block;
+	}
+	.btn {
+		display: inline-block;
+		padding: 0.55em 1.6em;
+		border-radius: 8px;
+		background: var(--accent);
+		color: #fff;
+		font-size: 0.95rem;
+		font-weight: 600;
+	}
+	.btn:hover {
+		text-decoration: none;
+		opacity: 0.9;
+	}
+	.fallback {
+		margin: 0.9rem 0 0;
+		font-size: 0.78rem;
+		color: var(--text-muted);
+	}
+</style>

@@ -30,3 +30,17 @@ export const TIP = {
 		{ label: '支付宝', file: 'alipay.png' },
 	],
 };
+
+// 邮件订阅。注册好 Substack 后，把 publication 填成你的子域名即可生效。
+// 例如你的地址是 https://axinpm.substack.com，就填 'axinpm'。
+// 留空时整个订阅区不显示。
+export const NEWSLETTER = {
+	enabled: true,
+	publication: '', // ← 填这里
+	// 'embed' = 内嵌表单，读者不用离开页面（转化更高）
+	// 'link'  = 一个按钮，点了跳到 Substack
+	mode: 'embed' as 'embed' | 'link',
+	title: '订阅更新',
+	note: '新文章发布时收到邮件。不发广告，随时可退订。',
+	buttonText: '订阅',
+};

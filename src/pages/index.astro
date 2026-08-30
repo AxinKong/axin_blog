@@ -6,6 +6,7 @@ import PostList from '../components/PostList.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getPublishedPosts } from '../lib/posts';
 import { url } from '../lib/url';
+import Subscribe from '../components/Subscribe.astro';
 
 const posts = (await getPublishedPosts()).slice(0, 5);
 ---
@@ -37,6 +38,8 @@ const posts = (await getPublishedPosts()).slice(0, 5);
 				</div>
 				<PostList posts={posts} />
 			</section>
+
+			<Subscribe compact />
 		</main>
 		<Footer />
 	</body>
