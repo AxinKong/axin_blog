@@ -1,0 +1,17 @@
+{
+	// 拖入 / 粘贴图片时，自动复制到 src/assets/blog/<文章名>/ 并插入 Markdown 引用
+	"markdown.copyFiles.destination": {
+		"/src/content/blog/**/*": "${documentWorkspaceFolder}/src/assets/blog/${documentBaseName}/${fileName}"
+	},
+	"markdown.editor.drop.copyIntoWorkspace": "always",
+	"markdown.editor.paste.copyIntoWorkspace": "always",
+	"markdown.editor.filePaste.videoSnippet": "<video controls src=\"${src}\"></video>",
+
+	// 中文写作体验
+	"[markdown]": {
+		"editor.wordWrap": "on",
+		"editor.quickSuggestions": { "other": false },
+		"editor.unicodeHighlight.ambiguousCharacters": false,
+		"files.trimTrailingWhitespace": false
+	}
+}
