@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import PostList from '../components/PostList.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getPublishedPosts } from '../lib/posts';
+import { url } from '../lib/url';
 
 const posts = (await getPublishedPosts()).slice(0, 5);
 ---
@@ -25,14 +26,14 @@ const posts = (await getPublishedPosts()).slice(0, 5);
 					跨团队协作里那些教科书不会告诉你的部分。
 				</p>
 				<p>
-					不谈虚的框架，只写能直接拿去用的东西。<a href="/about">关于我 →</a>
+					不谈虚的框架，只写能直接拿去用的东西。<a href={url('/about')}>关于我 →</a>
 				</p>
 			</section>
 
 			<section class="latest">
 				<div class="section-head">
 					<h2>最新文章</h2>
-					<a href="/blog">全部 →</a>
+					<a href={url('/blog')}>全部 →</a>
 				</div>
 				<PostList posts={posts} />
 			</section>

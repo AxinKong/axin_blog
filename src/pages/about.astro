@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE } from '../consts';
+import { url } from '../lib/url';
 ---
 
 <!doctype html>
@@ -40,7 +41,7 @@ import { SITE_TITLE } from '../consts';
 			<h2>联系我</h2>
 			<p>
 				邮件：<a href="mailto:kongaxing@gmail.com">kongaxing@gmail.com</a>
-				&middot; 订阅 <a href="/rss.xml">RSS</a>
+				&middot; 订阅 <a href={url('/rss.xml')}>RSS</a>
 			</p>
 		</main>
 		<Footer />

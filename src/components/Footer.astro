@@ -1,6 +1,7 @@
 ---
 import { AUTHOR, SOCIAL_LINKS } from '../consts';
 import SocialIcon from './SocialIcon.astro';
+import { url } from '../lib/url';
 const year = new Date().getFullYear();
 ---
 
@@ -9,7 +10,7 @@ const year = new Date().getFullYear();
 		{
 			SOCIAL_LINKS.map((link) => (
 				<a
-					href={link.href}
+					href={url(link.href)}
 					target={link.href.startsWith('http') ? '_blank' : undefined}
 					rel={link.href.startsWith('http') ? 'noopener' : undefined}
 				>

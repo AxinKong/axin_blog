@@ -2,19 +2,20 @@
 import { NAV_LINKS, SITE_TITLE, SOCIAL_LINKS } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import SocialIcon from './SocialIcon.astro';
+import { url } from '../lib/url';
 ---
 
 <header>
 	<nav>
-		<a class="brand" href="/">{SITE_TITLE}</a>
+		<a class="brand" href={url('/')}>{SITE_TITLE}</a>
 		<div class="links">
-			{NAV_LINKS.map((link) => <HeaderLink href={link.href}>{link.label}</HeaderLink>)}
+			{NAV_LINKS.map((link) => <HeaderLink href={url(link.href)}>{link.label}</HeaderLink>)}
 		</div>
 		<div class="social">
 			{
 				SOCIAL_LINKS.map((link) => (
 					<a
-						href={link.href}
+						href={url(link.href)}
 						target={link.href.startsWith('http') ? '_blank' : undefined}
 						rel={link.href.startsWith('http') ? 'noopener' : undefined}
 					>
