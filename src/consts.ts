@@ -17,3 +17,16 @@ export const SOCIAL_LINKS = [
 	{ href: 'mailto:kongaxing@gmail.com', label: 'Email', icon: 'mail' },
 	{ href: 'https://www.linkedin.com/in/axin-k-15a151196/', label: 'LinkedIn', icon: 'linkedin' },
 ];
+
+// 文章底部的打赏区。
+// 把收款码图片放进 src/assets/tip/，文件名和下面的 file 对上即可。
+// 图片不存在的渠道会自动隐藏；全都没有时整个打赏区不显示。
+export const TIP = {
+	enabled: true,
+	title: '觉得有用？',
+	note: '这个博客没有广告也不恰饭，如果内容帮到你，随意打赏一点，多少都是鼓励。',
+	methods: [
+		{ label: '微信', file: 'wechat.png' },
+		{ label: '支付宝', file: 'alipay.png' },
+	],
+};
