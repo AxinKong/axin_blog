@@ -1,9 +1,9 @@
 ---
-title: '在这里写标题'
-description: '一句话说清这篇讲什么。会显示在文章列表和分享卡片上，写具体一点。'
+title: 'Deliver my own Technical Product'
+description: 'As a PM, I used to deliver products & projects for enterprises, this time I delivered a product for myself'
 pubDate: 2026-08-30
-tags: ['需求管理']
-draft: true
+tags: ['product management']
+draft: false
 ---
 
 开头别铺垫，直接说你要讲的那件事。
@@ -42,7 +42,9 @@ draft: true
 
 把图片文件拖进编辑器就会自动生成下面这样一行，`![]` 里是图片说明（可留空）：
 
+![alt text](../../assets/blog/my-first-post/avatar_2.png)
 ![一张示例图](../../assets/blog/my-first-post/demo.png)
+
 
 图片会被自动压缩、生成多种尺寸，不用你操心。
 
