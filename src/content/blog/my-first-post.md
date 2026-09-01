@@ -1,61 +1,57 @@
 ---
-title: 'Deliver my own Technical Product'
-description: 'As a PM, I used to deliver products & projects for enterprises, this time I delivered a product for myself'
-pubDate: 2026-08-30
-tags: ['product management']
+title: "My Japanese Will Never Be Native. Here's Where My Value Is."
+description: 'After a few years as a foreign IT project manager in Japan, I found my answer: cross-border delivery.'
+pubDate: 2026-09-01
+tags: ['career', 'project management', 'working in japan']
 draft: false
 ---
 
-开头别铺垫，直接说你要讲的那件事。
+I'm Chinese, working in IT project management in Japan.
 
-比如：「上个季度我们砍掉了排期表上 40% 的需求，交付速度反而快了。这篇讲我们是怎么砍的。」
+Neither Japanese nor English is my native language, so I have no linguistic edge. And while I work in tech, I work in project management — I don't code as well as engineers who came up through STEM.
 
-## 小标题用两个井号
+For a long time I was stuck on the same question: **is this the right path? Does Japan actually need a foreign IT PM whose Japanese is merely okay?**
 
-正文段落。写你的具体场景 —— 什么项目、什么规模、遇到了什么。
+Every foreign friend I talked to gave me the same advice: get your Japanese to the next level and switching jobs gets easier. They're not wrong. But I know my Japanese will never be as good as a native speaker's. So if that road doesn't have an end for me, where is my value?
 
-**加粗**用两个星号，*斜体*用一个，[链接这样写](https://example.com)。
+A few years in, I've found my own answer.
 
-> 引用块用大于号开头，适合放对话、原话、或者你想强调的一句结论。
+## An observation: Japanese people don't reply to me
 
-## 列表
+Start with something concrete.
 
-无序列表：
+When I reach out on LinkedIn to someone whose work interests me — just to ask what their team is working on — Indians, Chinese, and Americans usually reply. **Japanese people almost never do.** To reach those same people, it seems you need a recruiter or some other intermediary.
 
-- 第一点
-- 第二点
-- 第三点
+The same thing happens inside the company. As a PM I need to talk to other departments constantly. But as a foreigner, messaging someone on another team cold gets me a very slow response, if any. What works instead: find someone on my own team who has worked with that team before, and have them introduce me. After that, things warm up quickly.
 
-有序列表：
+My first conclusion was simple: Japanese people are hard to communicate with.
 
-1. 先做这个
-2. 再做那个
+## Later, I understood the logic
 
-## 表格
+The longer I lived here, the more I realized this isn't difficulty. It's a different operating system.
 
-| 方案 | 成本 | 结论 |
-| --- | --- | --- |
-| A | 高 | 砍掉 |
-| B | 低 | 做 |
+**Business relationships here run on trust and risk control.** People don't form working relationships with someone who isn't yet "inside" — not out of hostility, but because there's no basis for it yet.
 
-## 图片
+**There's a strong long-term orientation.** Once a working relationship exists, the default assumption is that it will last a long time and needs to be maintained. So even when an opportunity is clearly profitable in the short term, people won't spend much energy chasing the quick money. Steady money from a stable, long-lived relationship is worth more.
 
-把图片文件拖进编辑器就会自动生成下面这样一行，`![]` 里是图片说明（可留空）：
+Once I understood those two things, "not replying" stopped looking like arrogance or exclusion. It became a predictable, internally consistent behavior.
 
-![alt text](../../assets/blog/my-first-post/avatar_2.png)
-![一张示例图](../../assets/blog/my-first-post/demo.png)
+It also meant something else: **the intermediary isn't a favor. It's a required component of the system.**
 
+## Which is why cross-border projects need a bridge
 
-图片会被自动压缩、生成多种尺寸，不用你操心。
+Follow that logic and the conclusion is obvious.
 
-## 代码块
+Take a project that involves an overseas partner and has to land in Japan — the development team is abroad, the product team is here, and the product ships in Japan. Having the two sides talk directly usually doesn't work. Not because anyone lacks ability, but because the trust-building step is missing.
 
-```text
-需要贴流程图或伪代码时用三个反引号包起来
-```
+Someone has to sit in the middle, like a bridge, and connect the two sides. Otherwise the project doesn't move.
 
----
+## Cross-border delivery is a foreigner's leverage
 
-三个减号是分割线。
+So, my own view: **assuming you can communicate in the language, the biggest advantage a foreigner has in Japan is cross-border delivery capability.**
 
-结尾给个能带走的东西：一句总结，或者一个可以直接照做的动作。
+Being the bridge. Understanding what each side actually needs. Communicating actively, and building trust between two groups that wouldn't otherwise have any.
+
+And that trust compounds. It accumulates project by project, and gradually becomes a foreigner's leverage in Japan.
+
+Getting your Japanese to native level is one path. But it isn't the only one — and even at the end of that road, what you've earned is being the same as everyone else.
