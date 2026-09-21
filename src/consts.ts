@@ -8,6 +8,7 @@ export const SITE_URL = 'https://kinc.jp';
 export const NAV_LINKS = [
 	{ href: '/', label: '首页' },
 	{ href: '/blog', label: '文章' },
+	{ href: '/work', label: '作品集' },
 	{ href: '/about', label: '关于' },
 ];
 

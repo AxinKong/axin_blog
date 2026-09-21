@@ -1,0 +1,81 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+import { getPublishedWork } from '../../lib/work';
+import { url } from '../../lib/url';
+
+const items = await getPublishedWork();
+const statusLabel: Record<string, string> = {
+	'in-progress': '进行中',
+	shipped: '已上线',
+	archived: '已归档',
+};
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title={`作品集 · ${SITE_TITLE}`} description="产品案例研究：从问题到交付的完整过程" />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>作品集</h1>
+			<p class="lede">
+				每个案例记录一次完整的过程：我发现了什么问题、找谁验证、怎么定义产品、
+				怎么和工程师协作、用户怎么反馈、最后产生了什么结果。
+			</p>
+
+			<ul class="work-list">
+				{
+					items.map((item) => (
+						<li>
+							<a href={url(`/work/${item.id}/`)}>
+								<div class="row">
+									<h2>{item.data.title}</h2>
+									<span class:list={['status', item.data.status]}>
+										{statusLabel[item.data.status]}
+									</span>
+								</div>
+								{item.data.subtitle && <p class="sub">{item.data.subtitle}</p>}
+								<p class="role">{item.data.role}</p>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			{items.length === 0 && <p class="empty">还没有公开的案例。</p>}
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.lede { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2.5rem; }
+	.work-list { list-style: none; margin: 0; padding: 0; }
+	.work-list li { margin: 0 0 1rem; }
+	.work-list a {
+		display: block;
+		padding: 1.3rem 1.4rem;
+		border: 1px solid var(--border);
+		border-radius: 12px;
+		color: var(--text);
+		transition: border-color 0.15s ease;
+	}
+	.work-list a:hover { text-decoration: none; border-color: var(--accent); }
+	.row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+	.work-list h2 { margin: 0; font-size: 1.1rem; border: none; padding: 0; }
+	.status {
+		flex-shrink: 0;
+		font-size: 0.72rem;
+		padding: 0.1em 0.55em;
+		border-radius: 999px;
+		background: var(--accent-soft);
+		color: var(--accent);
+	}
+	.sub { margin: 0.4rem 0 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+	.role { margin: 0.6rem 0 0; font-size: 0.78rem; color: var(--text-muted); }
+	.empty { color: var(--text-muted); }
+</style>

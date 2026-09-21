@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# 产品日志是个人工作记录，不发布到网站
+product-log/*.md
+!product-log/TEMPLATE.md
