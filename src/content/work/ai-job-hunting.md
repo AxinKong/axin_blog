@@ -3,10 +3,10 @@ title: 'AI Job Hunting Skill'
 subtitle: 'From User Pain Point to AI Product — a 0→1 experiment for international job seekers in Japan'
 description: '面向在日外国求职者的 AI 产品实验：从用户痛点出发，到 MVP、用户测试、迭代与获客。'
 pubDate: 2026-09-22
-role: '【待填：Product / Growth Lead？还是别的】'
-team: ['【待填：AI Engineer — implementation & technical development】']
+role: 'Product & Growth Lead'
+team: ['Steven — AI Engineer']
 timeline: '2026-09 — 进行中'
-stack: ['Claude', 'Agent Skill']
+stack: ['Claude Agent Skill', 'career-ops (MIT, upstream)']
 status: 'in-progress'
 draft: true
 ---
@@ -14,6 +14,30 @@ draft: true
 > ⚠️ **这是骨架，不是成品。** 标着【待填】的地方必须用真实数据填，
 > 没做过的访谈、没测过的用户、没发生的结果都不要写。
 > 招聘经理会追问细节，编的东西在面试里撑不过三个问题。
+
+## Process Overview
+
+这个案例记录的是一条完整的 0→1 链路，而不是「一个 AI 小项目」：
+
+```text
+Customer Discovery          采访 20 个求职者
+        ↓                   发现 5 个主要 pain points
+Product Hypothesis          设计 AI Skill
+        ↓
+MVP                         和 AI Engineer 开发
+        ↓
+User Testing                30 人使用
+        ↓
+Feedback                    completion rate / satisfaction
+        ↓                   failure points / repeat usage
+Iteration                   修改 Skill
+        ↓
+Growth                      小红书 · LinkedIn · WeChat · 社群 · referral
+        ↓
+Monetization                ¥1,000 / ¥3,000 / ¥5,000 定价测试
+```
+
+每一步的真实记录见下。
 
 ## 01. Problem
 
@@ -155,13 +179,17 @@ User Input → Prompt / Skill → LLM → Structured Output
 
 **【待填 — 全部必须是真实数字】**
 
-| Metric | Value |
-| --- | --- |
-| Users tested | 【待填】 |
-| Completed the workflow | 【待填】 |
-| Said the output changed how they would apply | 【待填】 |
-| Used it more than once | 【待填】 |
-| Recommendation acceptance | 【待填】 |
+计划让 30 人使用，收集四类数据：
+
+| Metric | 定义 | Value |
+| --- | --- | --- |
+| Completion rate | 走完整条流程的比例 | 【待填】 |
+| User satisfaction | 【待填：怎么测？几分制？】 | 【待填】 |
+| Common failure points | 用户卡住/放弃的位置 | 【待填】 |
+| Repeat usage | 用了不止一次的人数 | 【待填】 |
+
+**Failure points 是这四个里最有价值的。** 满意度告诉你好不好，
+失败点告诉你下一步做什么 —— 它直接变成 Iteration 那一节的输入。
 
 ## 09. Growth / GTM
 
@@ -176,7 +204,30 @@ User Input → Prompt / Skill → LLM → Structured Output
 
 > *I didn't just build the product. I also tested how to acquire its first users.*
 
-## 10. What I Learned
+## 10. Monetization
+
+用户愿不愿意付钱，是验证价值最硬的一道检验 —— 比满意度评分可信得多。
+
+**定价测试**
+
+| Package | 价格 | 包含什么 | 转化率 | 样本量 |
+| --- | --- | --- | --- | --- |
+| Basic | ¥1,000 | 【待填】 | 【待填】 | 【待填】 |
+| Standard | ¥3,000 | 【待填】 | 【待填】 | 【待填】 |
+| Premium | ¥5,000 | 【待填】 | 【待填】 | 【待填】 |
+
+**要回答的问题**
+
+- 三档里哪一档转化最高？为什么？
+- 说「愿意付费」的人和**真的付了钱**的人，差多少？（这个差值本身就是一个发现）
+- 不付费的人卡在哪 —— 价格、信任、还是价值没说清？
+
+> ⚠️ 【待填】这一节必须是真实的付费测试。
+> 问卷里的「你愿意付多少钱」**不算数** —— 说和做之间的鸿沟，
+> 恰恰是 PM 需要证明自己懂的东西。没做过就先空着，
+> 写「Planned」比写假数字强得多。
+
+## 11. What I Learned
 
 **【待填 — 写具体的，不要写 "I learned a lot about AI"】**
 
@@ -190,7 +241,7 @@ User Input → Prompt / Skill → LLM → Structured Output
 
 ## My Role
 
-**【待填：见下方"角色归属"说明，这一节必须先想清楚再写】**
+**Product & Growth Lead**
 
 - Customer discovery / User interviews
 - Product definition / Workflow design
@@ -199,5 +250,16 @@ User Input → Prompt / Skill → LLM → Structured Output
 - User testing / Feedback analysis
 - Product iteration
 - Early user acquisition / GTM experiments
+- Pricing & monetization experiments
 
-**Others**：【待填：AI Engineer 是谁、负责什么。如果项目基于他人的开源工作，在这里写明】
+**Steven — AI Engineer**
+Implementation & technical development.
+
+### Built on
+
+这个产品构建在 [career-ops](https://github.com/santifer/career-ops) 之上 ——
+一个 MIT 许可的开源求职工具集（作者 santifer）。我们没有从零写一套简历解析和
+ATS 对接，而是 fork 了它，把工程精力集中在**面向在日国际求职者的那部分差异**上。
+
+*这个选择本身是一个产品决策：* 用现成的开源底座换取迭代速度，
+把有限的工程资源投在真正没人解决过的问题上，而不是重复造轮子。
