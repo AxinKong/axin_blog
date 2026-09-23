@@ -220,7 +220,7 @@ Format:
 ## 09. Customer discovery
 
 **Planned.** Every insight so far comes from n=1 — me. The next step is testing whether
-these four breakdowns generalise.
+these five breakdowns generalise.
 
 Interviews with job seekers in the KinC community, focused on:
 
