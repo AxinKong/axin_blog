@@ -4,11 +4,11 @@ subtitle: 'I used AI to apply to 48 IT roles in Japan. 8 instant rejections, 1 i
 description: 'A 0→1 AI product for job seekers in Japan — built from an n=1 failure, a real pricing dataset, and a deliberate decision not to ship the course yet.'
 pubDate: 2026-09-23
 role: 'Product & Growth Lead'
-team: ['Steven — AI Engineer', '【TBD: name】 — UI']
-timeline: '2026-09 — ongoing (Phase 0)'
+team: ['Steven — AI Engineer', 'Iris — UI']
+timeline: '2026-08 — ongoing (Phase 0)'
 stack: ['Claude Agent Skill', 'Shukatsu-ops']
 status: 'in-progress'
-draft: true
+draft: false
 ---
 
 > **Status: Phase 0 — validation.** This documents a project without a conclusion yet.
@@ -30,6 +30,8 @@ It is built specifically for **new graduates and mid-level career changers in Ja
 
 This case study covers the job-seeker product.
 
+A three-person project: product, UI, and engineering.
+
 ### Distribution: KinC
 
 [KinC](https://kinc.jp) is a professional agency dedicated to helping English-speaking individuals study and build careers in Japan. three years old, a community of ~1,450, and **108 paying customers to date**.
@@ -42,11 +44,6 @@ This case study covers the job-seeker product.
   directly predictive of what Enishi AI users will pay — not a proxy from a different market.
 - **Discovery has a real sample pool.** The interviews in §9 draw from people who are
   already paying to solve this exact problem.
-
-The constraint that comes with it: **this audience is Chinese speakers in Japan.**
-Whether the findings generalise to the wider "job seekers in Japan" market in Enishi AI's positioning is untested. 【TBD】
-
-A three-person project: product, UI, and engineering.
 
 ## 01. Origin — I was user zero, and it failed
 
@@ -73,8 +70,6 @@ These five are the real starting point of the project. They are not second-hand 
 from interviews — they are first-hand evidence from running the process end to end.
 
 ### What they point to
-
-The five breakdowns are not the same kind of problem, and they do not have the same owner:
 
 | # | Type of problem | Who should fix it |
 | --- | --- | --- |
@@ -130,7 +125,7 @@ My own n=1 already points one way; it needs a real sample. 【TBD】
 
 ## 05. Key product decision — not shipping the course yet
 
-The original sequence was *run the workflow → record the course → sell it*. After 48
+The original sequence was *run the workflow → release the AI skill and record a user-guide course → sell it*. After 48
 applications, 8 instant rejections and 1 interview, I reversed it.
 
 **The reasoning: when the outcome is unknown, the process is the content.**
@@ -153,10 +148,10 @@ doesn't start.
 
 | Phase | When | What | Entry condition |
 | --- | --- | --- | --- |
-| **0 — Validate** | This week | One Xiaohongshu post to test the water. Zero cost. | — |
-| **1 — Free content** | September | 3 posts/week, target +1,000 followers | First post > 50 saves **and** at least 1 interview |
-| **2 — Productise** | Oct–Nov | Template pack, ¥199–399 | 1,000+ followers |
-| **3 — Full course** | From December | Full course, ¥5,000–10,000 | **Already hired** |
+| **0 — Validate** | September | One social media post to test the water. Zero cost. | — |
+| **1 — Free content** | October | 3 posts/week, target +1,000 followers | First post > 50 saves **and** at least 2 interviews |
+| **2 — Productise** | Nov | Template pack, ¥199–399 | 1,000+ followers |
+| **3 — Full course** | From December | membership, ¥5,000–10,000 | **I am already hired** |
 
 **Phase 3 is gated on me actually getting hired.** Until then, the course does not go on sale.
 
@@ -171,26 +166,14 @@ Images: tracking-sheet screenshot (company names redacted) + before/after of the
 
 ## 07. Product / MVP
 
-Not an "AI job-search platform." The five breakdowns each get a different treatment,
-and being explicit about which is which *is* the product decision:
-
-| Breakdown | Decision | Why |
-| --- | --- | --- |
-| #1 Execution quality | **Build** — verify every CV fact against the user's own record before it ships | One-time engineering fix, high cost when it fails |
-| #2 Data freshness | **Build** — confirm a role is open via API before surfacing it | Same |
-| #3 Tool boundary | **Partial** — support standard ATS, skip custom portals | Custom portals are slower than applying by hand |
-| #4 Measurement gap | **Accept** — instrument proxy metrics, don't pretend to solve it | Employers don't return outcome data. Structural. |
-| #5 Source of authority | **Constrain** — AI may reword, never originate a fact | Not a bug. The boundary the product enforces. |
-
-**AI Job Fit — assisted, verified applications**
+**AI Job Application — assisted, verified applications**
 
 | | |
 | --- | --- |
 | **Input** | The user's own experience record + a job description |
-| **Output** | A verified-open role match, plus application documents where **every factual claim traces back to the user's record** — AI controls wording, not substance |
+| **Output** | A verified-open role match on a daily basis, auto generated application documents and custom-portal auto-apply where every factual claim traces back to the user’s record, routine tracking|
 
-**Out of scope:** generating experience the user did not supply, custom-portal auto-apply,
-interview simulation. The first is ruled out by #5; the others don't pay for themselves.
+**Out of scope:** generating experience the user did not supply, interview simulation.
 
 ### Built on
 
@@ -204,7 +187,7 @@ and spend scarce engineering time on the part nobody has solved.
 
 ## 08. Engineering collaboration
 
-**【TBD — needs one real end-to-end round】**
+Agile delivery. 【TBD: one real end-to-end sprint release】
 
 Format:
 
@@ -219,13 +202,13 @@ Format:
 
 ## 09. Customer discovery
 
-**Planned.** Every insight so far comes from n=1 — me. The next step is testing whether
+**Planned.** Every insight so far comes from two people — me and one other student. The next step is testing whether
 these five breakdowns generalise.
 
 Interviews with job seekers in the KinC community, focused on:
 
 1. When AI gives you a list of roles, do you open each one? How many turn out closed or irrelevant?
-2. Do you let AI write your CV, or write it yourself and have AI polish it? Which got replies?
+2. Do you let AI write your CV, or write it yourself and have AI polish it? Which got more replies?
 3. Have you ever sent an application with a factual error you didn't catch?
 4. After applying, how do you know what happened? What do you actually do?
 
@@ -245,12 +228,12 @@ the same people who are Enishi AI's users. This is the actual distribution acros
 
 | Tier | What it is | Price | Customers | Revenue | % of revenue |
 | --- | --- | --- | --- | --- | --- |
-| Intro | One-off 1-hour session on using AI tools for job hunting | ¥1,000 | **94** | ¥94,000 | 28.1% |
-| Coaching | Monthly, AI + human coaching | ¥7,500 | **8** | ¥60,000 | 18.0% |
-| Until-hired | Ongoing AI + human coaching until placed | ¥30,000 | **6** | ¥180,000 | 53.9% |
-| | | | **108** | **¥334,000** | |
+| Intro | One-off 1-hour session on using AI tools for job hunting | ¥500 | **94** | ¥47,000 | 16.4% |
+| Coaching | Monthly, AI + human coaching | ¥7,500 | **8** | ¥60,000 | 20.9% |
+| Until-hired | Ongoing AI + human coaching until placed | ¥30,000 | **6** | ¥180,000 | 62.7% |
+| | | | **108** | **¥287,000** | |
 
-ARPU: **¥3,093**. The 14 coaching customers are **13% of customers and 72% of revenue**.
+ARPU: **¥2,657**. The 14 coaching customers are **13% of customers and 84% of revenue**.
 
 ### The finding
 
@@ -258,7 +241,7 @@ Look at what happens to volume at each price step:
 
 | Price step | Multiple | Customers | Drop |
 | --- | --- | --- | --- |
-| ¥1,000 → ¥7,500 | 7.5× | 94 → 8 | **−91.5%** |
+| ¥500 → ¥7,500 | 15× | 94 → 8 | **−91.5%** |
 | ¥7,500 → ¥30,000 | 4.0× | 8 → 6 | **−25.0%** |
 
 **A 4× price increase costs almost no volume.** Above a certain threshold, demand is
@@ -270,7 +253,7 @@ Two things follow:
 1. **The ¥7,500 tier is probably destroying value.** If most of those 8 customers would
    have bought at ¥30,000, the middle tier is discounting the exact people who were willing
    to pay most.
-2. **The real bottleneck is ¥1,000 → paid coaching**, where 91.5% drop off. That is where
+2. **The real bottleneck is ¥500 → paid coaching**, where 91.5% drop off. That is where
    volume is, and where the product should be aimed.
 
 ### Open question → next experiment
@@ -279,12 +262,6 @@ Two things follow:
 
 - Does removing or repricing the middle tier increase total revenue, or does it lose the 8?
 - Is there room *above* ¥30,000, given how insensitive that step already is?
-- Of the 94 intro customers, how many were already in the community vs. newly acquired —
-  i.e. is the ¥1,000 session a product, or a lead magnet?
-
-> Stated willingness-to-pay from a survey does not count here. The gap between what people
-> say and what they pay is exactly what this dataset measures — and it's the reason this
-> section has real numbers instead of estimates.
 
 ## 11. Metrics
 
@@ -294,7 +271,7 @@ Two things follow:
 | --- | --- |
 | KinC community | ~1,450 (3 years) |
 | Paying customers to date | 108 |
-| Revenue to date | ¥334,000 |
+| Revenue to date | ¥287,000 |
 | My own AI-assisted run | 48 applications / 8 instant rejections / 1 interview |
 | Interviews from AI-generated CVs | 0 |
 | Interviews from AI-polished CVs | 1 (the only one) |
@@ -309,8 +286,6 @@ Two things follow:
 
 ## 12. What I learned
 
-**【TBD — project ongoing. Write specifics, not "I learned a lot about AI."】**
-
 Two things are already clear:
 
 **1. Verification matters more than generation.** Every breakdown except #5 came from an
@@ -324,16 +299,17 @@ AI stops being useful turned out to be more valuable than making it do more.
 
 ## My Role
 
-**Product & Growth Lead**
+**Product/Project Manager & Growth Lead**
 
 - User zero / failure analysis
 - Problem definition / product scope
 - Phase planning and entry conditions
 - Requirement definition / engineering collaboration
+- project management / agile delivery
 - Content strategy and acquisition
 - Pricing and monetization design
 
 **Steven — AI Engineer** — implementation and technical development.
-**【TBD: name】 — UI.**
+**Iris — UI.**
 
 Three people, no separate researcher or data analyst. Everything in the list above was mine.
