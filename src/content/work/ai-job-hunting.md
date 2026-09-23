@@ -4,7 +4,7 @@ subtitle: 'I used AI to apply to 20 IT roles in Japan. Zero replies. Then I trac
 description: 'A 0→1 AI product for international job seekers in Japan — built from an n=1 failure, a real pricing dataset, and a deliberate decision not to ship the course yet.'
 pubDate: 2026-09-23
 role: 'Product & Growth Lead'
-team: ['Steven — AI Engineer', '【TBD: third member & scope】']
+team: ['Steven — AI Engineer']
 timeline: '2026-09 — ongoing (Phase 0)'
 stack: ['Claude Agent Skill', 'career-ops (MIT, upstream)']
 status: 'in-progress'
@@ -25,7 +25,7 @@ search — **screening which companies are worth applying to**, and **re-enterin
 information on every application** — then package the method into a video course and
 sell it through Xiaohongshu, Taobao and Instagram.
 
-Planned as a 3-month project with 3 people.
+A two-person project: product and engineering.
 
 ## 01. Origin — I was user zero, and it failed
 
@@ -268,4 +268,5 @@ could not be checked. The user had no way to know whether to trust it.
 **Steven — AI Engineer**
 Implementation and technical development.
 
-**【TBD: third member and scope】**
+Two people total — no designer, no separate researcher. Everything in the list above
+was mine to do.
