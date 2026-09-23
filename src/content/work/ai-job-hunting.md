@@ -1,7 +1,7 @@
 ---
-title: 'AI Job Hunting Tools · KinC'
+title: 'Enishi AI — Getting Hired in Japan Tech'
 subtitle: 'I used AI to apply to 20 IT roles in Japan. Zero replies. Then I traced every reason why.'
-description: 'A 0→1 AI product for international job seekers in Japan — built from an n=1 failure, a real pricing dataset, and a deliberate decision not to ship the course yet.'
+description: 'A 0→1 AI product for career changers entering Japan tech — built from an n=1 failure, a real pricing dataset, and a deliberate decision not to ship the course yet.'
 pubDate: 2026-09-23
 role: 'Product & Growth Lead'
 team: ['Steven — AI Engineer']
@@ -17,13 +17,38 @@ draft: true
 
 ## Context
 
-[KinC](https://kinc.jp) is a job-search agency for Chinese professionals working in
-Japan. It has been running for three years and has a community of roughly **1,450 people**.
+**[Enishi AI](https://www.linkedin.com/company/enishi-ai-career/)** (founded 2025) is an
+AI-powered tool set for getting hired in Japan's tech industry.
 
-The original plan: use AI to remove two obvious sources of repetitive work in a job
-search — **screening which companies are worth applying to**, and **re-entering the same
-information on every application** — then package the method into a video course and
-sell it through Xiaohongshu, Taobao and Instagram.
+> *Upgrade your AI skills. Secure your career. Your bridge to Japanese tech opportunities.*
+
+**For job seekers**, it automates the hard parts of a job search in Japan — matching a
+resume to the right roles, submitting applications, and tracking every step that follows.
+It is built specifically for **career changers** — Product Designers, AI Engineers and
+Product Managers moving into Japan's tech scene.
+
+**For individuals and teams**, it also covers AI adoption: setup and consulting that turn
+AI tools into actual workflows.
+
+This case study covers the job-seeker product.
+
+### Distribution: KinC
+
+[KinC](https://kinc.jp) is a job-search agency for Chinese professionals in Japan —
+three years old, a community of ~1,450, and **108 paying customers to date**.
+
+**KinC's students are Enishi AI's users.** That matters more than it sounds:
+
+- **No cold start.** The product launches into an existing, reachable audience instead of
+  hunting for first users.
+- **The pricing dataset in §10 is the same population.** What those 108 customers paid is
+  directly predictive of what Enishi AI users will pay — not a proxy from a different market.
+- **Discovery has a real sample pool.** The interviews in §9 draw from people who are
+  already paying to solve this exact problem.
+
+The constraint that comes with it: **this audience is Chinese speakers in Japan.**
+Whether the findings generalise to the wider "career changer entering Japan tech" market
+in Enishi AI's positioning is untested. 【TBD】
 
 A two-person project: product and engineering.
 
@@ -178,8 +203,9 @@ Interviews with job seekers in the KinC community, focused on:
 
 ## 10. Monetization — a real pricing dataset
 
-KinC has been selling job-search help for three years. This is the actual distribution
-across 108 paying customers:
+KinC has been selling job-search help to this exact audience for three years —
+the same people who are Enishi AI's users. This is the actual distribution across
+108 paying customers:
 
 | Tier | What it is | Price | Customers | Revenue | % of revenue |
 | --- | --- | --- | --- | --- | --- |
