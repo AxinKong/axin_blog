@@ -1,265 +1,227 @@
 ---
-title: 'AI Job Hunting Skill'
-subtitle: 'From User Pain Point to AI Product — a 0→1 experiment for international job seekers in Japan'
-description: '面向在日外国求职者的 AI 产品实验：从用户痛点出发，到 MVP、用户测试、迭代与获客。'
-pubDate: 2026-09-22
+title: 'AI 求职工具 · KinC'
+subtitle: '我用 AI 投了 20 份日本 IT 岗位，0 回复。然后把原因一条条查了出来。'
+description: '面向在日华人求职者的 AI 产品实验：从一次 n=1 的失败出发，做失败归因、定义问题、设定验证门槛，并决定先不做课。'
+pubDate: 2026-09-23
 role: 'Product & Growth Lead'
-team: ['Steven — AI Engineer']
-timeline: '2026-09 — 进行中'
+team: ['Steven — AI Engineer', '【待填：第三位成员及分工】']
+timeline: '2026-09 — 进行中（Phase 0）'
 stack: ['Claude Agent Skill', 'career-ops (MIT, upstream)']
 status: 'in-progress'
 draft: true
 ---
 
-> ⚠️ **这是骨架，不是成品。** 标着【待填】的地方必须用真实数据填，
-> 没做过的访谈、没测过的用户、没发生的结果都不要写。
-> 招聘经理会追问细节，编的东西在面试里撑不过三个问题。
+> **当前阶段：Phase 0 验证。** 这份案例记录的是一个还没有结论的项目。
+> 已发生的部分是真实数据，未发生的部分标注为 Planned，不含任何估算或虚构数字。
 
-## Process Overview
+## Context
 
-这个案例记录的是一条完整的 0→1 链路，而不是「一个 AI 小项目」：
+[KinC](https://kinc.jp) 是一家帮助在日华人求职的机构，已运营三年，
+社群约 1,450 人。
 
-```text
-Customer Discovery          采访 20 个求职者
-        ↓                   发现 5 个主要 pain points
-Product Hypothesis          设计 AI Skill
-        ↓
-MVP                         和 AI Engineer 开发
-        ↓
-User Testing                30 人使用
-        ↓
-Feedback                    completion rate / satisfaction
-        ↓                   failure points / repeat usage
-Iteration                   修改 Skill
-        ↓
-Growth                      小红书 · LinkedIn · WeChat · 社群 · referral
-        ↓
-Monetization                ¥1,000 / ¥3,000 / ¥5,000 定价测试
-```
+这个项目的初始设想是：用 AI 解决求职过程中两个明确的重复劳动 ——
+**筛选值得投递的公司**，和**简历投递时反复填写相同信息** ——
+再把整套 AI 求职方法做成视频课，在小红书 / 淘宝 / Instagram 上销售。
 
-每一步的真实记录见下。
+计划周期 3 个月，3 人。
 
-## 01. Problem
+## 01. Origin — 我是 0 号用户，而且失败了
 
-International job seekers in Japan often struggle to translate their actual
-experience into Japanese-market-ready job applications.
+产品还没开始做，我先用现有 AI 工具跑了一遍完整的求职流程。
 
-**【待填：你自己观察到的问题，每条都要能说出是从哪来的】**
+**结果：投递 20 份日本 IT 岗位，0 回复。**
 
-- Problem 1 — 不知道自己的经验应该对应什么岗位
-- Problem 2 — JD 看不懂，不知道 employer 真正在找什么
-- Problem 3 — 简历写出来了，但无法证明自己符合 JD
-- Problem 4 — 不知道如何针对不同岗位调整 CV / interview answer
+这个结果直接推翻了原计划 —— **没有成功案例，课录不出来。**
+但它带来了比成功更有价值的东西：一份可归因的失败记录。
 
-### User Journey
+## 02. Failure Analysis — 四个失败点
 
-```text
-Find Job → Read JD → Understand requirements → Compare with own experience
-        → Rewrite CV → Apply → Interview
-```
+把 20 次投递逐条复盘，问题集中在四处：
 
-**Where does the user struggle?**
+| # | 失败点 | 具体表现 | 代价 |
+| --- | --- | --- | --- |
+| 1 | **数据错误未被发现** | 简历上的日期错了整整一年 | 白投一个月 |
+| 2 | **AI 筛选结果不可靠** | 早上筛出的 7 个「优质岗位」，逐个打开 JD 后全部证伪 | 筛选环节等于没做 |
+| 3 | **平台信号不可信** | LinkedIn 标记「您有竞争优势」，点进详情页匹配度 0/10 | 误导决策方向 |
+| 4 | **投递后完全失联** | 12 条申请，三周零跟进 | 无法判断卡在哪一环 |
 
-【待填：在上面这条链路上标出断点，并说明你凭什么判断这里是断点】
+**这四条是整个项目真正的起点。** 它们不是访谈得来的二手信息，
+是我自己走完流程后留下的一手证据。
 
-## 02. Customer Discovery
+### 归因
 
-**【待填 — 这一节是整个案例的地基，没有它下面全是空中楼阁】**
+四条失败点指向两个不同性质的问题：
 
-计划访谈 10–20 位国际求职者，问题清单：
+- **#1 是执行质量问题** — AI 生成的内容没有校验环节
+- **#2 #3 是信号质量问题** — 无论是 AI 还是平台，给出的「匹配度」判断都不可靠
+- **#4 是流程可见性问题** — 投出去之后是个黑箱
 
-1. 你最近申请什么岗位？
-2. 哪一步最困难？
-3. 你有没有使用 ChatGPT？
-4. ChatGPT 哪些地方帮助不大？
-5. 你最终为什么没有继续使用？
-6. 如果 AI 可以自动完成 X，你会不会使用？
-7. 你愿意付多少钱？
+其中 **#2 #3 是最值得做的**：它们不是我一个人的问题，
+而且现有工具（包括 ChatGPT 和 LinkedIn 本身）都没解决。
 
-### Pain Point Matrix
+## 03. Problem Statement
 
-| Pain Point | 出现人数 | 严重程度 |
-| --- | --- | --- |
-| 不知道如何匹配 JD | 【待填】 | 【待填】 |
-| CV tailoring 很麻烦 | 【待填】 | 【待填】 |
-| 不知道自己的优势 | 【待填】 | 【待填】 |
-| Interview preparation | 【待填】 | 【待填】 |
+> 在日国际求职者无法判断一个岗位**是否真的值得投**，
+> 也无法判断自己**是否真的匹配** —— 现有的 AI 工具和招聘平台
+> 都会给出看似可信、实则经不起核对的匹配信号。
 
-## 03. Product Hypothesis
+## 04. Hypothesis
 
-**Hypothesis**
+如果 AI 的输出能够做到 **每一条判断都可追溯到 JD 原文和简历原文**，
+那么匹配信号的可信度会显著提升，用户就能把时间花在真正值得投的岗位上。
 
-如果 AI 能够完成 `JD → 用户经验 → Skill Gap → Application Strategy` 这条链路，
-用户就可以更快判断：**「这个职位到底适不适合我，以及我应该怎么申请。」**
+**可证伪的形式**：让用户对 AI 给出的匹配判断逐条核对，
+记录「核对后推翻」的比例。这个比例应当显著低于我自己那次的 7/7 全部证伪。
 
-**【待填：这个假设可证伪吗？你打算怎么验证它成立或不成立？】**
+**【待填：这个验证还没做。做完填入真实比例。】**
 
-## 04. MVP
+## 05. 关键产品决策：现在不做课
 
-不做「AI 求职平台」，只做一个核心 Skill：
+原计划是「跑通流程 → 录课 → 售卖」。20 份 0 回复之后，我把它推翻了。
 
-**AI Job Fit & Application Strategy Skill**
+**理由：结果未知的时候，过程本身才是内容。**
+
+市面上的同类课都在讲「我用 AI 三天拿到 offer」。
+我现在能讲的是「我用 AI 投了 20 份，0 回复，然后一条条查出了原因」——
+**后者更可信，而且没有人在讲。**
+
+等真正拿到 offer 再回头做课，素材完整度和可信度完全不同。
+
+> 这是这个项目里我认为最重要的一个决策：**把不确定性变成内容资产，
+> 而不是假装确定性已经存在。**
+
+## 06. 分阶段计划（含进入条件）
+
+不按时间推进，按**证据**推进。每个阶段有明确的进入门槛，
+达不到就不进下一阶段。
+
+| 阶段 | 时间 | 做什么 | 进入条件 |
+| --- | --- | --- | --- |
+| **0 验证** | 本周 | 小红书发 1 条测水温，零成本 | — |
+| **1 免费内容** | 9 月 | 每周 3 条，目标 +1,000 粉 | 首帖收藏 > 50 **且** 至少 1 个面试 |
+| **2 产品化** | 10–11 月 | 模板包 ¥199–399 | 粉丝数达 1,000+ |
+| **3 正式售课** | 12 月起 | 系统课 ¥5,000–10,000 | **已入职** |
+
+**Phase 3 的进入条件是「已入职」** —— 也就是说，
+在我自己没拿到 offer 之前，这个课不会卖。
+
+### 首帖（Phase 0 交付物）
+
+> 我用 AI 投了 20 份日本 IT 岗位，0 面试。今天把原因一条条查出来了。
+
+配图：追踪表截图（公司名打码）+ 简历日期错误的对比图。
+
+**【待填：发布后的真实数据 —— 收藏 / 点赞 / 评论 / 涨粉】**
+
+## 07. Product / MVP
+
+不做「AI 求职平台」。基于上面的归因，MVP 只解决 #2 #3：
+
+**AI Job Fit — 可核对的匹配判断**
 
 | | |
 | --- | --- |
-| **输入** | Job Description + Resume |
-| **输出** | ① Job Fit ② Matching Experience ③ Missing Skills ④ Positioning Strategy ⑤ CV Improvement ⑥ Interview Focus |
+| **输入** | Job Description + 简历 |
+| **输出** | 匹配判断，**每条结论标注出处**（JD 原文第几条 / 简历哪段经历） |
 
-**Out of scope（同样重要）**：【待填 — 明确说不做什么，边界比功能更能体现 PM 判断】
+**Out of scope**：自动投递、面试模拟、简历代写。
+这些要么已有成熟工具，要么不解决上面归因出来的核心问题。
 
-## 05. AI Skill Design
+### Built on
 
-### 产品逻辑
+工程实现基于 [career-ops](https://github.com/santifer/career-ops)
+（MIT 开源，作者 santifer）的 fork。我们没有从零写简历解析和 ATS 对接，
+而是把工程资源集中在**面向在日国际求职者的差异化部分**。
 
-```text
-                 USER
-                  │
-          Resume + Job Description
-                  │
-                  ▼
-          ┌─────────────────┐
-          │  Job Analysis   │
-          └────────┬────────┘
-                   ↓
-          Requirement Mapping
-                   ↓
-          ┌─────────────────┐
-          │   Experience    │
-          │    Matching     │
-          └────────┬────────┘
-                   ↓
-             Skill Gap
-                   ↓
-          Application Strategy
-                   ↓
-        ┌──────────┼──────────┐
-        ↓          ↓          ↓
-      CV Tips   Interview   Positioning
-```
+*这本身是一个产品决策*：用开源底座换迭代速度，
+把有限的工程时间投在没人解决过的问题上。
 
-### 技术链路
+## 08. Engineer Collaboration
 
-```text
-User Input → Prompt / Skill → LLM → Structured Output
-          → Validation → User → Feedback → Skill Iteration
-```
+**【待填 —— 需要一次真实的完整回合】**
 
-**【待填：这两张图要换成你们实际的设计。现在这版是计划里的示意图，
-不是你们真正做出来的东西 —— 面试官会问「validation 具体验什么」。】**
-
-## 06. Engineer Collaboration
-
-> 这一节是你 IT PM 背景最值钱的地方。不要写 "I worked with an AI engineer."
-
-**Product → Engineering Translation（示例格式）**
+记录格式：
 
 | 环节 | 内容 |
 | --- | --- |
-| User feedback | 「AI 的 recommendation 太 generic。」 |
-| Product interpretation | Recommendations need to reference the user's actual experience and target JD requirements. |
-| Product requirement | Each recommendation must cite at least one specific experience from the user's CV. |
-| Engineering discussion | Prompt structure / context injection / output validation |
-| Implementation | 【待填】 |
-| User testing | 【待填】 |
-| Iteration | 【待填】 |
+| 观察到的问题 | 例：AI 筛出的 7 个岗位全部证伪 |
+| 产品判断 | 匹配判断必须可追溯到原文，否则无法核对 |
+| 产品需求 | 每条结论必须引用 JD 原文和简历中的具体段落 |
+| 工程讨论 | 【待填：Steven 提出的约束和最终方案】 |
+| 实现 | 【待填】 |
+| 验证 | 【待填】 |
 
-**【待填：换成你们真实发生过的一次。一个真实的完整回合，
-胜过五个漂亮但虚构的。】**
+## 09. Customer Discovery
 
-## 07. Version History
+**Planned.** 目前所有洞察来自 n=1（我自己）。
+下一步需要验证这四个失败点是否普遍存在。
 
-| Version | Change | Why |
+计划访谈 KinC 社群中的求职者，重点问：
+
+1. 你用 AI 筛过岗位吗？筛出来的结果你会逐个核对吗？
+2. 核对之后，有多少比例被你推翻？
+3. 你信任 LinkedIn 的匹配度标记吗？
+4. 投递之后你怎么跟进？
+
+| Pain Point | 出现人数 | 严重程度 |
 | --- | --- | --- |
-| V0.1 | 【待填】 | Initial hypothesis |
-| V0.2 | 【待填】 | User feedback |
-| V0.3 | 【待填】 | User feedback |
-| V0.4 | 【待填】 | User feedback |
+| AI 筛选结果不可靠 | 【待填】 | 【待填】 |
+| 平台匹配信号不可信 | 【待填】 | 【待填】 |
+| 简历数据错误未被发现 | 【待填】 | 【待填】 |
+| 投递后无跟进 | 【待填】 | 【待填】 |
 
-## 08. User Testing & Results
+## 10. Metrics
 
-**【待填 — 全部必须是真实数字】**
+**基线（真实）**
 
-计划让 30 人使用，收集四类数据：
+| 指标 | 当前值 |
+| --- | --- |
+| KinC 社群规模 | ~1,450（三年积累） |
+| 我的投递结果 | 20 投 / 0 回复 |
+| AI 筛选准确率 | 0/7（全部证伪） |
 
-| Metric | 定义 | Value |
-| --- | --- | --- |
-| Completion rate | 走完整条流程的比例 | 【待填】 |
-| User satisfaction | 【待填：怎么测？几分制？】 | 【待填】 |
-| Common failure points | 用户卡住/放弃的位置 | 【待填】 |
-| Repeat usage | 用了不止一次的人数 | 【待填】 |
+**目标（Planned，尚未验证）**
 
-**Failure points 是这四个里最有价值的。** 满意度告诉你好不好，
-失败点告诉你下一步做什么 —— 它直接变成 Iteration 那一节的输入。
-
-## 09. Growth / GTM
-
-测试获客渠道：小红书 / LinkedIn / WeChat / 在日国际学生社群 / Referral
-
-| Channel | Leads | Conversion | Cost |
+| 指标 | 目标 | 测量方式 | 验收时点 |
 | --- | --- | --- | --- |
-| 小红书 | 【待填】 | 【待填】 | 【待填】 |
-| LinkedIn | 【待填】 | 【待填】 | 【待填】 |
-| WeChat | 【待填】 | 【待填】 | 【待填】 |
-| Community | 【待填】 | 【待填】 | 【待填】 |
+| 首帖收藏 | > 50 | 小红书后台 | Phase 0 结束 |
+| 涨粉 | +1,000 | 小红书后台 | Phase 1 结束 |
+| 首月转化 | 3 单 | 订单数 | 产品发布后首月 |
 
-> *I didn't just build the product. I also tested how to acquire its first users.*
+## 11. Monetization
 
-## 10. Monetization
+阶梯式，每一档都绑定前一档的证据：
 
-用户愿不愿意付钱，是验证价值最硬的一道检验 —— 比满意度评分可信得多。
+| 阶段 | 形态 | 价格 | 前置条件 |
+| --- | --- | --- | --- |
+| Phase 2 | 模板包 | ¥199–399 | 1,000 粉 |
+| Phase 3 | 系统课 | ¥5,000–10,000 | 已入职 |
 
-**定价测试**
+**【待填：真实转化数据。问卷里的「愿意付多少钱」不算数 ——
+说和做之间的差值，本身就是一个发现。】**
 
-| Package | 价格 | 包含什么 | 转化率 | 样本量 |
-| --- | --- | --- | --- | --- |
-| Basic | ¥1,000 | 【待填】 | 【待填】 | 【待填】 |
-| Standard | ¥3,000 | 【待填】 | 【待填】 | 【待填】 |
-| Premium | ¥5,000 | 【待填】 | 【待填】 | 【待填】 |
+## 12. What I Learned
 
-**要回答的问题**
+**【待填 —— 项目进行中。写具体的，不要写 "I learned a lot about AI"。】**
 
-- 三档里哪一档转化最高？为什么？
-- 说「愿意付费」的人和**真的付了钱**的人，差多少？（这个差值本身就是一个发现）
-- 不付费的人卡在哪 —— 价格、信任、还是价值没说清？
+目前可以确定的一条：
 
-> ⚠️ 【待填】这一节必须是真实的付费测试。
-> 问卷里的「你愿意付多少钱」**不算数** —— 说和做之间的鸿沟，
-> 恰恰是 PM 需要证明自己懂的东西。没做过就先空着，
-> 写「Planned」比写假数字强得多。
-
-## 11. What I Learned
-
-**【待填 — 写具体的，不要写 "I learned a lot about AI"】**
-
-参考方向（填你自己真正经历过的）：
-
-1. Users don't always know how to articulate the real problem.
-2. AI accuracy isn't always the biggest UX problem.
-3. Product requirements need to translate qualitative feedback into testable behavior.
-4. Small iterations can improve user experience more than adding features.
-5. AI product development requires continuous collaboration between users, product and engineering.
+**AI 输出的可信度问题，比 AI 输出的质量问题更致命。**
+7 个岗位全部证伪，不是因为 AI 写得不好，
+而是因为它给出的判断无法核对 —— 用户无从知道该不该信。
 
 ## My Role
 
 **Product & Growth Lead**
 
-- Customer discovery / User interviews
-- Product definition / Workflow design
-- AI Skill design / Requirement definition
-- Engineer collaboration
-- User testing / Feedback analysis
-- Product iteration
-- Early user acquisition / GTM experiments
-- Pricing & monetization experiments
+- 0 号用户 / 失败归因
+- 问题定义 / 产品边界
+- 阶段规划与进入条件设定
+- 需求定义 / 工程协作
+- 内容策略与获客
+- 定价与商业化设计
 
 **Steven — AI Engineer**
 Implementation & technical development.
 
-### Built on
-
-这个产品构建在 [career-ops](https://github.com/santifer/career-ops) 之上 ——
-一个 MIT 许可的开源求职工具集（作者 santifer）。我们没有从零写一套简历解析和
-ATS 对接，而是 fork 了它，把工程精力集中在**面向在日国际求职者的那部分差异**上。
-
-*这个选择本身是一个产品决策：* 用现成的开源底座换取迭代速度，
-把有限的工程资源投在真正没人解决过的问题上，而不是重复造轮子。
+**【待填：第三位成员及分工】**
