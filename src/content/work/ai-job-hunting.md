@@ -1,227 +1,271 @@
 ---
-title: 'AI 求职工具 · KinC'
-subtitle: '我用 AI 投了 20 份日本 IT 岗位，0 回复。然后把原因一条条查了出来。'
-description: '面向在日华人求职者的 AI 产品实验：从一次 n=1 的失败出发，做失败归因、定义问题、设定验证门槛，并决定先不做课。'
+title: 'AI Job Hunting Tools · KinC'
+subtitle: 'I used AI to apply to 20 IT roles in Japan. Zero replies. Then I traced every reason why.'
+description: 'A 0→1 AI product for international job seekers in Japan — built from an n=1 failure, a real pricing dataset, and a deliberate decision not to ship the course yet.'
 pubDate: 2026-09-23
 role: 'Product & Growth Lead'
-team: ['Steven — AI Engineer', '【待填：第三位成员及分工】']
-timeline: '2026-09 — 进行中（Phase 0）'
+team: ['Steven — AI Engineer', '【TBD: third member & scope】']
+timeline: '2026-09 — ongoing (Phase 0)'
 stack: ['Claude Agent Skill', 'career-ops (MIT, upstream)']
 status: 'in-progress'
 draft: true
 ---
 
-> **当前阶段：Phase 0 验证。** 这份案例记录的是一个还没有结论的项目。
-> 已发生的部分是真实数据，未发生的部分标注为 Planned，不含任何估算或虚构数字。
+> **Status: Phase 0 — validation.** This documents a project without a conclusion yet.
+> Everything marked with real numbers happened. Everything else is labelled
+> *Planned* or 【TBD】. No estimates are presented as results.
 
 ## Context
 
-[KinC](https://kinc.jp) 是一家帮助在日华人求职的机构，已运营三年，
-社群约 1,450 人。
+[KinC](https://kinc.jp) is a job-search agency for Chinese professionals working in
+Japan. It has been running for three years and has a community of roughly **1,450 people**.
 
-这个项目的初始设想是：用 AI 解决求职过程中两个明确的重复劳动 ——
-**筛选值得投递的公司**，和**简历投递时反复填写相同信息** ——
-再把整套 AI 求职方法做成视频课，在小红书 / 淘宝 / Instagram 上销售。
+The original plan: use AI to remove two obvious sources of repetitive work in a job
+search — **screening which companies are worth applying to**, and **re-entering the same
+information on every application** — then package the method into a video course and
+sell it through Xiaohongshu, Taobao and Instagram.
 
-计划周期 3 个月，3 人。
+Planned as a 3-month project with 3 people.
 
-## 01. Origin — 我是 0 号用户，而且失败了
+## 01. Origin — I was user zero, and it failed
 
-产品还没开始做，我先用现有 AI 工具跑了一遍完整的求职流程。
+Before building anything, I ran the full job-search workflow myself using existing AI tools.
 
-**结果：投递 20 份日本 IT 岗位，0 回复。**
+**Result: 20 applications to IT roles in Japan. Zero replies.**
 
-这个结果直接推翻了原计划 —— **没有成功案例，课录不出来。**
-但它带来了比成功更有价值的东西：一份可归因的失败记录。
+That killed the original plan outright — **you cannot record a course with no successful
+outcome.** But it produced something more useful than a success would have: a failure I
+could take apart.
 
-## 02. Failure Analysis — 四个失败点
+## 02. Failure analysis — four distinct breakdowns
 
-把 20 次投递逐条复盘，问题集中在四处：
+Reviewing all 20 applications, the failures clustered into four points:
 
-| # | 失败点 | 具体表现 | 代价 |
+| # | Breakdown | What actually happened | Cost |
 | --- | --- | --- | --- |
-| 1 | **数据错误未被发现** | 简历上的日期错了整整一年 | 白投一个月 |
-| 2 | **AI 筛选结果不可靠** | 早上筛出的 7 个「优质岗位」，逐个打开 JD 后全部证伪 | 筛选环节等于没做 |
-| 3 | **平台信号不可信** | LinkedIn 标记「您有竞争优势」，点进详情页匹配度 0/10 | 误导决策方向 |
-| 4 | **投递后完全失联** | 12 条申请，三周零跟进 | 无法判断卡在哪一环 |
+| 1 | **Undetected data error** | A date on my CV was wrong by a full year | One month of applications wasted |
+| 2 | **AI screening was unreliable** | 7 roles screened as "strong matches" in the morning — all 7 disproved once I opened the actual JD | The screening step added zero value |
+| 3 | **Platform signals were untrustworthy** | LinkedIn flagged "you have a competitive edge"; the detail page showed 0/10 requirements matched | Actively misleading |
+| 4 | **No visibility after applying** | 12 applications, three weeks, zero follow-up signal | No way to tell which stage was failing |
 
-**这四条是整个项目真正的起点。** 它们不是访谈得来的二手信息，
-是我自己走完流程后留下的一手证据。
+These four are the real starting point of the project. They are not second-hand insights
+from interviews — they are first-hand evidence from running the process end to end.
 
-### 归因
+### What they point to
 
-四条失败点指向两个不同性质的问题：
+The four breakdowns are not the same kind of problem:
 
-- **#1 是执行质量问题** — AI 生成的内容没有校验环节
-- **#2 #3 是信号质量问题** — 无论是 AI 还是平台，给出的「匹配度」判断都不可靠
-- **#4 是流程可见性问题** — 投出去之后是个黑箱
+- **#1 is an execution-quality problem** — AI-generated content had no verification step
+- **#2 and #3 are signal-credibility problems** — both the AI and the platform produced
+  confidence scores that did not survive checking
+- **#4 is a process-visibility problem** — once submitted, the pipeline is a black box
 
-其中 **#2 #3 是最值得做的**：它们不是我一个人的问题，
-而且现有工具（包括 ChatGPT 和 LinkedIn 本身）都没解决。
+**#2 and #3 are the ones worth building for.** They are not specific to me, and nothing
+on the market — including ChatGPT and LinkedIn itself — currently solves them.
 
-## 03. Problem Statement
+## 03. Problem statement
 
-> 在日国际求职者无法判断一个岗位**是否真的值得投**，
-> 也无法判断自己**是否真的匹配** —— 现有的 AI 工具和招聘平台
-> 都会给出看似可信、实则经不起核对的匹配信号。
+> International job seekers in Japan cannot tell whether a role is genuinely worth
+> applying to, or whether they genuinely match it. Both AI tools and hiring platforms
+> produce match signals that look credible and do not hold up when checked.
 
 ## 04. Hypothesis
 
-如果 AI 的输出能够做到 **每一条判断都可追溯到 JD 原文和简历原文**，
-那么匹配信号的可信度会显著提升，用户就能把时间花在真正值得投的岗位上。
+If every judgement the AI makes is **traceable to a specific line in the JD and a specific
+line in the CV**, match signals become checkable, and users can spend their time on roles
+that are actually worth applying to.
 
-**可证伪的形式**：让用户对 AI 给出的匹配判断逐条核对，
-记录「核对后推翻」的比例。这个比例应当显著低于我自己那次的 7/7 全部证伪。
+**Falsifiable form:** have users verify each AI match judgement line by line and record the
+share that gets overturned. That share should be meaningfully lower than my own 7-out-of-7.
 
-**【待填：这个验证还没做。做完填入真实比例。】**
+**【TBD: this test has not been run. Fill in the real overturn rate.】**
 
-## 05. 关键产品决策：现在不做课
+## 05. Key product decision — not shipping the course yet
 
-原计划是「跑通流程 → 录课 → 售卖」。20 份 0 回复之后，我把它推翻了。
+The original sequence was *run the workflow → record the course → sell it*. After 20
+applications and zero replies, I reversed it.
 
-**理由：结果未知的时候，过程本身才是内容。**
+**The reasoning: when the outcome is unknown, the process is the content.**
 
-市面上的同类课都在讲「我用 AI 三天拿到 offer」。
-我现在能讲的是「我用 AI 投了 20 份，0 回复，然后一条条查出了原因」——
-**后者更可信，而且没有人在讲。**
+Every competing course sells the same story — *"I used AI and got an offer in three days."*
+What I can tell right now is *"I used AI for 20 applications, got nothing, and then traced
+every reason why."* **That is more credible, and nobody else is telling it.**
 
-等真正拿到 offer 再回头做课，素材完整度和可信度完全不同。
+Recording the course after I actually land a role produces material of a completely
+different quality.
 
-> 这是这个项目里我认为最重要的一个决策：**把不确定性变成内容资产，
-> 而不是假装确定性已经存在。**
+> This is the decision I'd most want to be judged on: **turn the uncertainty into a content
+> asset instead of pretending the certainty already exists.**
 
-## 06. 分阶段计划（含进入条件）
+## 06. Phased plan — gated on evidence, not dates
 
-不按时间推进，按**证据**推进。每个阶段有明确的进入门槛，
-达不到就不进下一阶段。
+Each phase has an explicit entry condition. If the condition isn't met, the next phase
+doesn't start.
 
-| 阶段 | 时间 | 做什么 | 进入条件 |
+| Phase | When | What | Entry condition |
 | --- | --- | --- | --- |
-| **0 验证** | 本周 | 小红书发 1 条测水温，零成本 | — |
-| **1 免费内容** | 9 月 | 每周 3 条，目标 +1,000 粉 | 首帖收藏 > 50 **且** 至少 1 个面试 |
-| **2 产品化** | 10–11 月 | 模板包 ¥199–399 | 粉丝数达 1,000+ |
-| **3 正式售课** | 12 月起 | 系统课 ¥5,000–10,000 | **已入职** |
+| **0 — Validate** | This week | One Xiaohongshu post to test the water. Zero cost. | — |
+| **1 — Free content** | September | 3 posts/week, target +1,000 followers | First post > 50 saves **and** at least 1 interview |
+| **2 — Productise** | Oct–Nov | Template pack, ¥199–399 | 1,000+ followers |
+| **3 — Full course** | From December | Full course, ¥5,000–10,000 | **Already hired** |
 
-**Phase 3 的进入条件是「已入职」** —— 也就是说，
-在我自己没拿到 offer 之前，这个课不会卖。
+**Phase 3 is gated on me actually getting hired.** Until then, the course does not go on sale.
 
-### 首帖（Phase 0 交付物）
+### Phase 0 deliverable
 
-> 我用 AI 投了 20 份日本 IT 岗位，0 面试。今天把原因一条条查出来了。
+> *I used AI to apply to 20 IT roles in Japan. Zero interviews. Today I traced every reason why.*
 
-配图：追踪表截图（公司名打码）+ 简历日期错误的对比图。
+Images: tracking-sheet screenshot (company names redacted) + before/after of the CV date error.
 
-**【待填：发布后的真实数据 —— 收藏 / 点赞 / 评论 / 涨粉】**
+**【TBD: real post metrics — saves, likes, comments, follower delta】**
 
 ## 07. Product / MVP
 
-不做「AI 求职平台」。基于上面的归因，MVP 只解决 #2 #3：
+Not an "AI job-search platform." Based on the analysis above, the MVP addresses only #2 and #3:
 
-**AI Job Fit — 可核对的匹配判断**
+**AI Job Fit — match judgements you can check**
 
 | | |
 | --- | --- |
-| **输入** | Job Description + 简历 |
-| **输出** | 匹配判断，**每条结论标注出处**（JD 原文第几条 / 简历哪段经历） |
+| **Input** | Job description + CV |
+| **Output** | A match judgement where **every claim cites its source** — which JD requirement, which line of the CV |
 
-**Out of scope**：自动投递、面试模拟、简历代写。
-这些要么已有成熟工具，要么不解决上面归因出来的核心问题。
+**Out of scope:** auto-apply, interview simulation, CV ghostwriting. Each is either already
+well served or doesn't address the breakdowns identified above.
 
 ### Built on
 
-工程实现基于 [career-ops](https://github.com/santifer/career-ops)
-（MIT 开源，作者 santifer）的 fork。我们没有从零写简历解析和 ATS 对接，
-而是把工程资源集中在**面向在日国际求职者的差异化部分**。
+Engineering is built on a fork of [career-ops](https://github.com/santifer/career-ops)
+(MIT, by santifer). We did not rewrite CV parsing and ATS integration from scratch — we put
+the engineering time into **what is specific to international job seekers in Japan**.
 
-*这本身是一个产品决策*：用开源底座换迭代速度，
-把有限的工程时间投在没人解决过的问题上。
+*That choice is itself a product decision:* trade an open-source base for iteration speed,
+and spend scarce engineering time on the part nobody has solved.
 
-## 08. Engineer Collaboration
+## 08. Engineering collaboration
 
-**【待填 —— 需要一次真实的完整回合】**
+**【TBD — needs one real end-to-end round】**
 
-记录格式：
+Format:
 
-| 环节 | 内容 |
+| Step | Content |
 | --- | --- |
-| 观察到的问题 | 例：AI 筛出的 7 个岗位全部证伪 |
-| 产品判断 | 匹配判断必须可追溯到原文，否则无法核对 |
-| 产品需求 | 每条结论必须引用 JD 原文和简历中的具体段落 |
-| 工程讨论 | 【待填：Steven 提出的约束和最终方案】 |
-| 实现 | 【待填】 |
-| 验证 | 【待填】 |
+| Observation | 7 screened roles, all 7 disproved on inspection |
+| Product interpretation | A match judgement is worthless if it can't be checked against source |
+| Requirement | Every claim must cite a specific JD requirement and a specific CV line |
+| Engineering discussion | 【TBD: Steven's constraints and the resolution】 |
+| Implementation | 【TBD】 |
+| Validation | 【TBD】 |
 
-## 09. Customer Discovery
+## 09. Customer discovery
 
-**Planned.** 目前所有洞察来自 n=1（我自己）。
-下一步需要验证这四个失败点是否普遍存在。
+**Planned.** Every insight so far comes from n=1 — me. The next step is testing whether
+these four breakdowns generalise.
 
-计划访谈 KinC 社群中的求职者，重点问：
+Interviews with job seekers in the KinC community, focused on:
 
-1. 你用 AI 筛过岗位吗？筛出来的结果你会逐个核对吗？
-2. 核对之后，有多少比例被你推翻？
-3. 你信任 LinkedIn 的匹配度标记吗？
-4. 投递之后你怎么跟进？
+1. Have you used AI to screen roles? Do you verify the results one by one?
+2. When you verify, what share gets overturned?
+3. Do you trust LinkedIn's match indicators?
+4. How do you follow up after applying?
 
-| Pain Point | 出现人数 | 严重程度 |
+| Pain point | Count | Severity |
 | --- | --- | --- |
-| AI 筛选结果不可靠 | 【待填】 | 【待填】 |
-| 平台匹配信号不可信 | 【待填】 | 【待填】 |
-| 简历数据错误未被发现 | 【待填】 | 【待填】 |
-| 投递后无跟进 | 【待填】 | 【待填】 |
+| AI screening unreliable | 【TBD】 | 【TBD】 |
+| Platform match signals untrustworthy | 【TBD】 | 【TBD】 |
+| Undetected CV data errors | 【TBD】 | 【TBD】 |
+| No visibility after applying | 【TBD】 | 【TBD】 |
 
-## 10. Metrics
+## 10. Monetization — a real pricing dataset
 
-**基线（真实）**
+KinC has been selling job-search help for three years. This is the actual distribution
+across 108 paying customers:
 
-| 指标 | 当前值 |
+| Tier | What it is | Price | Customers | Revenue | % of revenue |
+| --- | --- | --- | --- | --- | --- |
+| Intro | One-off 1-hour session on using AI tools for job hunting | ¥1,000 | **94** | ¥94,000 | 28.1% |
+| Coaching | Monthly, AI + human coaching | ¥7,500 | **8** | ¥60,000 | 18.0% |
+| Until-hired | Ongoing AI + human coaching until placed | ¥30,000 | **6** | ¥180,000 | 53.9% |
+| | | | **108** | **¥334,000** | |
+
+ARPU: **¥3,093**. The 14 coaching customers are **13% of customers and 72% of revenue**.
+
+### The finding
+
+Look at what happens to volume at each price step:
+
+| Price step | Multiple | Customers | Drop |
+| --- | --- | --- | --- |
+| ¥1,000 → ¥7,500 | 7.5× | 94 → 8 | **−91.5%** |
+| ¥7,500 → ¥30,000 | 4.0× | 8 → 6 | **−25.0%** |
+
+**A 4× price increase costs almost no volume.** Above a certain threshold, demand is
+close to price-insensitive — the hard decision for the customer is *"do I want real help"*,
+not *"how much does it cost."*
+
+Two things follow:
+
+1. **The ¥7,500 tier is probably destroying value.** If most of those 8 customers would
+   have bought at ¥30,000, the middle tier is discounting the exact people who were willing
+   to pay most.
+2. **The real bottleneck is ¥1,000 → paid coaching**, where 91.5% drop off. That is where
+   volume is, and where the product should be aimed.
+
+### Open question → next experiment
+
+**【TBD: repricing test not yet run.】** The experiment to run:
+
+- Does removing or repricing the middle tier increase total revenue, or does it lose the 8?
+- Is there room *above* ¥30,000, given how insensitive that step already is?
+- Of the 94 intro customers, how many were already in the community vs. newly acquired —
+  i.e. is the ¥1,000 session a product, or a lead magnet?
+
+> Stated willingness-to-pay from a survey does not count here. The gap between what people
+> say and what they pay is exactly what this dataset measures — and it's the reason this
+> section has real numbers instead of estimates.
+
+## 11. Metrics
+
+**Baseline (real)**
+
+| Metric | Value |
 | --- | --- |
-| KinC 社群规模 | ~1,450（三年积累） |
-| 我的投递结果 | 20 投 / 0 回复 |
-| AI 筛选准确率 | 0/7（全部证伪） |
+| KinC community | ~1,450 (3 years) |
+| Paying customers to date | 108 |
+| Revenue to date | ¥334,000 |
+| My own applications | 20 sent / 0 replies |
+| AI screening accuracy | 0 of 7 |
 
-**目标（Planned，尚未验证）**
+**Targets (planned, not yet validated)**
 
-| 指标 | 目标 | 测量方式 | 验收时点 |
+| Metric | Target | How measured | By when |
 | --- | --- | --- | --- |
-| 首帖收藏 | > 50 | 小红书后台 | Phase 0 结束 |
-| 涨粉 | +1,000 | 小红书后台 | Phase 1 结束 |
-| 首月转化 | 3 单 | 订单数 | 产品发布后首月 |
+| First post saves | > 50 | Xiaohongshu analytics | End of Phase 0 |
+| Follower growth | +1,000 | Xiaohongshu analytics | End of Phase 1 |
+| First-month conversions | 3 | Order count | Month 1 post-launch |
 
-## 11. Monetization
+## 12. What I learned
 
-阶梯式，每一档都绑定前一档的证据：
+**【TBD — project ongoing. Write specifics, not "I learned a lot about AI."】**
 
-| 阶段 | 形态 | 价格 | 前置条件 |
-| --- | --- | --- | --- |
-| Phase 2 | 模板包 | ¥199–399 | 1,000 粉 |
-| Phase 3 | 系统课 | ¥5,000–10,000 | 已入职 |
+One thing is already clear:
 
-**【待填：真实转化数据。问卷里的「愿意付多少钱」不算数 ——
-说和做之间的差值，本身就是一个发现。】**
-
-## 12. What I Learned
-
-**【待填 —— 项目进行中。写具体的，不要写 "I learned a lot about AI"。】**
-
-目前可以确定的一条：
-
-**AI 输出的可信度问题，比 AI 输出的质量问题更致命。**
-7 个岗位全部证伪，不是因为 AI 写得不好，
-而是因为它给出的判断无法核对 —— 用户无从知道该不该信。
+**The credibility of an AI's output matters more than its quality.** Seven out of seven
+screened roles were wrong — not because the writing was bad, but because the judgement
+could not be checked. The user had no way to know whether to trust it.
 
 ## My Role
 
 **Product & Growth Lead**
 
-- 0 号用户 / 失败归因
-- 问题定义 / 产品边界
-- 阶段规划与进入条件设定
-- 需求定义 / 工程协作
-- 内容策略与获客
-- 定价与商业化设计
+- User zero / failure analysis
+- Problem definition / product scope
+- Phase planning and entry conditions
+- Requirement definition / engineering collaboration
+- Content strategy and acquisition
+- Pricing and monetization design
 
 **Steven — AI Engineer**
-Implementation & technical development.
+Implementation and technical development.
 
-**【待填：第三位成员及分工】**
+**【TBD: third member and scope】**

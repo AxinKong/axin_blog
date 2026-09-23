@@ -13,14 +13,14 @@ const { title, subtitle, description, heroImage, role, team, timeline, stack, st
 	Astro.props;
 
 const statusLabel = {
-	'in-progress': '进行中',
-	shipped: '已上线',
-	archived: '已归档',
+	'in-progress': 'In progress',
+	shipped: 'Shipped',
+	archived: 'Archived',
 }[status];
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 	<head>
 		<BaseHead title={title} description={description} image={heroImage} />
 	</head>
@@ -30,7 +30,7 @@ const statusLabel = {
 			<article>
 				<header class="cs-head">
 					<p class="eyebrow">
-						作品集 · 案例研究
+						Case Study
 						<span class:list={['status', status]}>{statusLabel}</span>
 					</p>
 					<h1>{title}</h1>
@@ -39,13 +39,13 @@ const statusLabel = {
 
 				<dl class="facts">
 					<div>
-						<dt>我的角色</dt>
+						<dt>Role</dt>
 						<dd>{role}</dd>
 					</div>
 					{
 						team.length > 0 && (
 							<div>
-								<dt>团队</dt>
+								<dt>Team</dt>
 								<dd>{team.join(' · ')}</dd>
 							</div>
 						)
@@ -53,7 +53,7 @@ const statusLabel = {
 					{
 						timeline && (
 							<div>
-								<dt>时间</dt>
+								<dt>Timeline</dt>
 								<dd>{timeline}</dd>
 							</div>
 						)
@@ -61,7 +61,7 @@ const statusLabel = {
 					{
 						stack.length > 0 && (
 							<div>
-								<dt>技术栈</dt>
+								<dt>Stack</dt>
 								<dd>{stack.join(' · ')}</dd>
 							</div>
 						)
@@ -78,7 +78,7 @@ const statusLabel = {
 			<Subscribe />
 
 			<nav class="back">
-				<a href={url('/work')}>← 返回作品集</a>
+				<a href={url('/work')}>← All work</a>
 			</nav>
 		</main>
 		<Footer />

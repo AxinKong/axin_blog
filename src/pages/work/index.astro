@@ -8,24 +8,25 @@ import { url } from '../../lib/url';
 
 const items = await getPublishedWork();
 const statusLabel: Record<string, string> = {
-	'in-progress': '进行中',
-	shipped: '已上线',
-	archived: '已归档',
+	'in-progress': 'In progress',
+	shipped: 'Shipped',
+	archived: 'Archived',
 };
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 	<head>
-		<BaseHead title={`作品集 · ${SITE_TITLE}`} description="产品案例研究：从问题到交付的完整过程" />
+		<BaseHead title={`Work · ${SITE_TITLE}`} description="Product case studies — from problem to delivery." />
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>作品集</h1>
+			<h1>Work</h1>
 			<p class="lede">
-				每个案例记录一次完整的过程：我发现了什么问题、找谁验证、怎么定义产品、
-				怎么和工程师协作、用户怎么反馈、最后产生了什么结果。
+				Each case study documents one full loop: the problem I found, how I validated it,
+				how I defined the product, how I worked with engineering, what users said,
+				and what actually came out of it.
 			</p>
 
 			<ul class="work-list">
@@ -46,7 +47,7 @@ const statusLabel: Record<string, string> = {
 					))
 				}
 			</ul>
-			{items.length === 0 && <p class="empty">还没有公开的案例。</p>}
+			{items.length === 0 && <p class="empty">No public case studies yet.</p>}
 		</main>
 		<Footer />
 	</body>
