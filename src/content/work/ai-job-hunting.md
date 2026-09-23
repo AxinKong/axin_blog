@@ -1,12 +1,12 @@
 ---
-title: 'Enishi AI — Getting Hired in Japan Tech'
-subtitle: 'I used AI to apply to 20 IT roles in Japan. Zero replies. Then I traced every reason why.'
-description: 'A 0→1 AI product for career changers entering Japan tech — built from an n=1 failure, a real pricing dataset, and a deliberate decision not to ship the course yet.'
+title: 'Enishi AI — Getting Hired in Japan'
+subtitle: 'I used AI to apply to 48 IT roles in Japan. 8 instant rejections, 1 interview. Then I traced every reason why.'
+description: 'A 0→1 AI product for job seekers in Japan — built from an n=1 failure, a real pricing dataset, and a deliberate decision not to ship the course yet.'
 pubDate: 2026-09-23
 role: 'Product & Growth Lead'
-team: ['Steven — AI Engineer']
+team: ['Steven — AI Engineer', '【TBD: name】 — UI']
 timeline: '2026-09 — ongoing (Phase 0)'
-stack: ['Claude Agent Skill', 'career-ops (MIT, upstream)']
+stack: ['Claude Agent Skill', 'Shukatsu-ops']
 status: 'in-progress'
 draft: true
 ---
@@ -17,25 +17,22 @@ draft: true
 
 ## Context
 
-**[Enishi AI](https://www.linkedin.com/company/enishi-ai-career/)** (founded 2025) is an
-AI-powered tool set for getting hired in Japan's tech industry.
+**[Enishi AI](https://www.linkedin.com/company/enishi-ai-career/)** (founded 2026 July) is an
+AI-powered tool set for getting hired in Japan
 
-> *Upgrade your AI skills. Secure your career. Your bridge to Japanese tech opportunities.*
+> *Upgrade your AI skills. Secure your career. Your bridge to opportunities in Japan.*
 
 **For job seekers**, it automates the hard parts of a job search in Japan — matching a
-resume to the right roles, submitting applications, and tracking every step that follows.
-It is built specifically for **career changers** — Product Designers, AI Engineers and
-Product Managers moving into Japan's tech scene.
+resume to the right Japanese format, auto-searching for suitable job opportunities, submitting applications, and tracking every step that follows.
+It is built specifically for **new graduates and mid-level career changers in Japan** 
 
-**For individuals and teams**, it also covers AI adoption: setup and consulting that turn
-AI tools into actual workflows.
+**For individuals and teams**, it also covers AI adoption: setup and consulting that turn AI tools into actual workflows.
 
 This case study covers the job-seeker product.
 
 ### Distribution: KinC
 
-[KinC](https://kinc.jp) is a job-search agency for Chinese professionals in Japan —
-three years old, a community of ~1,450, and **108 paying customers to date**.
+[KinC](https://kinc.jp) is a professional agency dedicated to helping English-speaking individuals study and build careers in Japan. three years old, a community of ~1,450, and **108 paying customers to date**.
 
 **KinC's students are Enishi AI's users.** That matters more than it sounds:
 
@@ -47,74 +44,101 @@ three years old, a community of ~1,450, and **108 paying customers to date**.
   already paying to solve this exact problem.
 
 The constraint that comes with it: **this audience is Chinese speakers in Japan.**
-Whether the findings generalise to the wider "career changer entering Japan tech" market
-in Enishi AI's positioning is untested. 【TBD】
+Whether the findings generalise to the wider "job seekers in Japan" market in Enishi AI's positioning is untested. 【TBD】
 
-A two-person project: product and engineering.
+A three-person project: product, UI, and engineering.
 
 ## 01. Origin — I was user zero, and it failed
 
 Before building anything, I ran the full job-search workflow myself using existing AI tools.
 
-**Result: 20 applications to IT roles in Japan. Zero replies.**
+**Result: 48 applications to IT roles in Japan. 8 instant rejections, 1 interview.**
 
-That killed the original plan outright — **you cannot record a course with no successful
-outcome.** But it produced something more useful than a success would have: a failure I
-could take apart.
+This was far worse than my previous job search through recruiters. But it produced something
+more useful than a success would have: a failure I could take apart.
 
-## 02. Failure analysis — four distinct breakdowns
+## 02. Failure analysis — five distinct breakdowns
 
-Reviewing all 20 applications, the failures clustered into four points:
+Reviewing all 48 applications, the failures clustered into five points:
 
 | # | Breakdown | What actually happened | Cost |
 | --- | --- | --- | --- |
-| 1 | **Undetected data error** | A date on my CV was wrong by a full year | One month of applications wasted |
-| 2 | **AI screening was unreliable** | 7 roles screened as "strong matches" in the morning — all 7 disproved once I opened the actual JD | The screening step added zero value |
-| 3 | **Platform signals were untrustworthy** | LinkedIn flagged "you have a competitive edge"; the detail page showed 0/10 requirements matched | Actively misleading |
+| 1 | **Undetected data error** |A date on my CV was wrong by a full year | One month of applications wasted without being detected by AI| 
+| 2 | **AI screening was unreliable** | Some of the positions in the generated job list do not match my background at all and some positions are even closed | The screening step added no value|
+| 3 | **Auto online apply were untrustworthy** | auto but super slow job application & limited data type can be filled in on websites | time wasting for AI apply instead of time saving |
 | 4 | **No visibility after applying** | 12 applications, three weeks, zero follow-up signal | No way to tell which stage was failing |
+| 5 | **No replies after applying** | Only resumes polished with the help of AI secured interviews and resumes generated entirely by AI did not| Truth and credibility violation |
 
-These four are the real starting point of the project. They are not second-hand insights
+These five are the real starting point of the project. They are not second-hand insights
 from interviews — they are first-hand evidence from running the process end to end.
 
 ### What they point to
 
-The four breakdowns are not the same kind of problem:
+The five breakdowns are not the same kind of problem, and they do not have the same owner:
 
-- **#1 is an execution-quality problem** — AI-generated content had no verification step
-- **#2 and #3 are signal-credibility problems** — both the AI and the platform produced
-  confidence scores that did not survive checking
-- **#4 is a process-visibility problem** — once submitted, the pipeline is a black box
+| # | Type of problem | Who should fix it |
+| --- | --- | --- |
+| 1 | **Execution quality** — no verification step | Engineering. One-time fix. |
+| 2 | **Data freshness** — wrong source of truth | Engineering. Switch to API-verified listings. |
+| 3 | **Tool boundary** — interface mismatch | Partly fixable. Standard ATS is fast; custom portals are slow. |
+| 4 | **Measurement gap** — no outcome feedback | Structural. Only proxy metrics are available. |
+| 5 | **Source of authority** — facts came from the model, not from me | **Not a bug to fix. A line to draw.** |
 
-**#2 and #3 are the ones worth building for.** They are not specific to me, and nothing
-on the market — including ChatGPT and LinkedIn itself — currently solves them.
+**#5 is the one that changes the product.** The others are engineering problems with
+engineering answers. #5 says something about where AI belongs in this workflow at all:
+
+> Only CVs that I wrote and AI *polished* got interviews.
+> CVs that AI *generated* did not.
+
+The model can improve how a claim is worded. It cannot be the source of the claim.
+That is not a limitation to engineer around — it is the boundary the product should enforce.
 
 ## 03. Problem statement
 
-> International job seekers in Japan cannot tell whether a role is genuinely worth
-> applying to, or whether they genuinely match it. Both AI tools and hiring platforms
-> produce match signals that look credible and do not hold up when checked.
+> AI job-search tools produce two things at scale: lists of roles to apply to, and documents to apply with. 
+> Neither is checked against a source of truth — so closed roles, mismatched roles, and factual errors in a CV 
+> all reach the employer before anyone notices and with no tracking nor replies afterwards
 
-## 04. Hypothesis
 
-If every judgement the AI makes is **traceable to a specific line in the JD and a specific
-line in the CV**, match signals become checkable, and users can spend their time on roles
-that are actually worth applying to.
+## 04. Hypotheses
 
-**Falsifiable form:** have users verify each AI match judgement line by line and record the
-share that gets overturned. That share should be meaningfully lower than my own 7-out-of-7.
+The problem statement names two unchecked outputs — the **list** and the **documents** —
+so there are two hypotheses, tested separately.
 
-**【TBD: this test has not been run. Fill in the real overturn rate.】**
+### H1 — Verify the list against a live source
+
+If every role reaching the user is confirmed **open** and confirmed to match stated
+requirements via the source system rather than a scraped snapshot, then time spent on
+roles that were never applicable drops.
+
+**Falsifiable form:** measure the share of surfaced roles that turn out closed or
+clearly mismatched when opened. Baseline is my own run. 【TBD: baseline rate, post-fix rate】
+
+### H2 — AI polishes, never authors
+
+The sharpest signal in §2 is #5: **AI-polished CVs got interviews; AI-generated CVs did not.**
+
+If every factual claim originates from the user's own record and AI is restricted to
+wording and formatting, then credibility is preserved and reply rate improves.
+
+**Falsifiable form:** compare reply rates between AI-polished and AI-generated applications.
+My own n=1 already points one way; it needs a real sample. 【TBD】
+
+> H2 is the more interesting one, because it argues **against** the thing most competitors
+> sell. "AI writes your CV" is the category's main pitch. My own data says that is exactly
+> what stops working.
 
 ## 05. Key product decision — not shipping the course yet
 
-The original sequence was *run the workflow → record the course → sell it*. After 20
-applications and zero replies, I reversed it.
+The original sequence was *run the workflow → record the course → sell it*. After 48
+applications, 8 instant rejections and 1 interview, I reversed it.
 
 **The reasoning: when the outcome is unknown, the process is the content.**
 
 Every competing course sells the same story — *"I used AI and got an offer in three days."*
-What I can tell right now is *"I used AI for 20 applications, got nothing, and then traced
-every reason why."* **That is more credible, and nobody else is telling it.**
+What I can tell right now is *"I sent 48 AI-assisted applications, did worse than when
+recruiters did it for me, and then traced every reason why."*
+**That is more credible, and nobody else is telling it.**
 
 Recording the course after I actually land a role produces material of a completely
 different quality.
@@ -138,7 +162,8 @@ doesn't start.
 
 ### Phase 0 deliverable
 
-> *I used AI to apply to 20 IT roles in Japan. Zero interviews. Today I traced every reason why.*
+> *I used AI to apply to 48 IT roles in Japan. 8 instant rejections, 1 interview —
+> worse than when recruiters did it for me. Today I traced every reason why.*
 
 Images: tracking-sheet screenshot (company names redacted) + before/after of the CV date error.
 
@@ -146,23 +171,33 @@ Images: tracking-sheet screenshot (company names redacted) + before/after of the
 
 ## 07. Product / MVP
 
-Not an "AI job-search platform." Based on the analysis above, the MVP addresses only #2 and #3:
+Not an "AI job-search platform." The five breakdowns each get a different treatment,
+and being explicit about which is which *is* the product decision:
 
-**AI Job Fit — match judgements you can check**
+| Breakdown | Decision | Why |
+| --- | --- | --- |
+| #1 Execution quality | **Build** — verify every CV fact against the user's own record before it ships | One-time engineering fix, high cost when it fails |
+| #2 Data freshness | **Build** — confirm a role is open via API before surfacing it | Same |
+| #3 Tool boundary | **Partial** — support standard ATS, skip custom portals | Custom portals are slower than applying by hand |
+| #4 Measurement gap | **Accept** — instrument proxy metrics, don't pretend to solve it | Employers don't return outcome data. Structural. |
+| #5 Source of authority | **Constrain** — AI may reword, never originate a fact | Not a bug. The boundary the product enforces. |
+
+**AI Job Fit — assisted, verified applications**
 
 | | |
 | --- | --- |
-| **Input** | Job description + CV |
-| **Output** | A match judgement where **every claim cites its source** — which JD requirement, which line of the CV |
+| **Input** | The user's own experience record + a job description |
+| **Output** | A verified-open role match, plus application documents where **every factual claim traces back to the user's record** — AI controls wording, not substance |
 
-**Out of scope:** auto-apply, interview simulation, CV ghostwriting. Each is either already
-well served or doesn't address the breakdowns identified above.
+**Out of scope:** generating experience the user did not supply, custom-portal auto-apply,
+interview simulation. The first is ruled out by #5; the others don't pay for themselves.
 
 ### Built on
 
-Engineering is built on a fork of [career-ops](https://github.com/santifer/career-ops)
-(MIT, by santifer). We did not rewrite CV parsing and ATS integration from scratch — we put
-the engineering time into **what is specific to international job seekers in Japan**.
+Engineering is built on **shukatsu-ops**, a fork of
+[career-ops](https://github.com/santifer/career-ops) (MIT, by santifer). We did not rewrite
+CV parsing and ATS integration from scratch — we put the engineering time into
+**what is specific to job seekers in Japan**.
 
 *That choice is itself a product decision:* trade an open-source base for iteration speed,
 and spend scarce engineering time on the part nobody has solved.
@@ -175,12 +210,12 @@ Format:
 
 | Step | Content |
 | --- | --- |
-| Observation | 7 screened roles, all 7 disproved on inspection |
-| Product interpretation | A match judgement is worthless if it can't be checked against source |
-| Requirement | Every claim must cite a specific JD requirement and a specific CV line |
-| Engineering discussion | 【TBD: Steven's constraints and the resolution】 |
+| Observation | Generated role lists contained positions that were closed, and positions unrelated to my background |
+| Product interpretation | The list was built from a stale snapshot, not from a live source — so freshness, not ranking, is the defect |
+| Requirement | A role may only be surfaced after its status is confirmed open against the source system |
+| Engineering discussion | 【TBD: Steven's constraints — API coverage, rate limits, what to do when no API exists】 |
 | Implementation | 【TBD】 |
-| Validation | 【TBD】 |
+| Validation | 【TBD: share of surfaced roles found closed, before vs after】 |
 
 ## 09. Customer discovery
 
@@ -189,16 +224,17 @@ these four breakdowns generalise.
 
 Interviews with job seekers in the KinC community, focused on:
 
-1. Have you used AI to screen roles? Do you verify the results one by one?
-2. When you verify, what share gets overturned?
-3. Do you trust LinkedIn's match indicators?
-4. How do you follow up after applying?
+1. When AI gives you a list of roles, do you open each one? How many turn out closed or irrelevant?
+2. Do you let AI write your CV, or write it yourself and have AI polish it? Which got replies?
+3. Have you ever sent an application with a factual error you didn't catch?
+4. After applying, how do you know what happened? What do you actually do?
 
 | Pain point | Count | Severity |
 | --- | --- | --- |
-| AI screening unreliable | 【TBD】 | 【TBD】 |
-| Platform match signals untrustworthy | 【TBD】 | 【TBD】 |
-| Undetected CV data errors | 【TBD】 | 【TBD】 |
+| Stale / irrelevant roles in AI-generated lists | 【TBD】 | 【TBD】 |
+| AI-generated CVs underperform AI-polished ones | 【TBD】 | 【TBD】 |
+| Undetected factual errors in applications | 【TBD】 | 【TBD】 |
+| Auto-apply slower than applying by hand | 【TBD】 | 【TBD】 |
 | No visibility after applying | 【TBD】 | 【TBD】 |
 
 ## 10. Monetization — a real pricing dataset
@@ -259,8 +295,9 @@ Two things follow:
 | KinC community | ~1,450 (3 years) |
 | Paying customers to date | 108 |
 | Revenue to date | ¥334,000 |
-| My own applications | 20 sent / 0 replies |
-| AI screening accuracy | 0 of 7 |
+| My own AI-assisted run | 48 applications / 8 instant rejections / 1 interview |
+| Interviews from AI-generated CVs | 0 |
+| Interviews from AI-polished CVs | 1 (the only one) |
 
 **Targets (planned, not yet validated)**
 
@@ -274,11 +311,16 @@ Two things follow:
 
 **【TBD — project ongoing. Write specifics, not "I learned a lot about AI."】**
 
-One thing is already clear:
+Two things are already clear:
 
-**The credibility of an AI's output matters more than its quality.** Seven out of seven
-screened roles were wrong — not because the writing was bad, but because the judgement
-could not be checked. The user had no way to know whether to trust it.
+**1. Verification matters more than generation.** Every breakdown except #5 came from an
+output that was never checked against a source — a stale listing, an unverified date, an
+application sent into a void. The model wasn't writing badly. Nothing was checking it.
+
+**2. There is a line AI should not cross, and finding it is a product decision.**
+AI-polished CVs got an interview. AI-generated CVs got instant rejections. The category
+sells "AI writes your CV"; my own data says that is the part that breaks. Deciding *where*
+AI stops being useful turned out to be more valuable than making it do more.
 
 ## My Role
 
@@ -291,8 +333,7 @@ could not be checked. The user had no way to know whether to trust it.
 - Content strategy and acquisition
 - Pricing and monetization design
 
-**Steven — AI Engineer**
-Implementation and technical development.
+**Steven — AI Engineer** — implementation and technical development.
+**【TBD: name】 — UI.**
 
-Two people total — no designer, no separate researcher. Everything in the list above
-was mine to do.
+Three people, no separate researcher or data analyst. Everything in the list above was mine.
