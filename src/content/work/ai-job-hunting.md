@@ -15,9 +15,7 @@ draft: false
 > This documents a project without a conclusion yet. Everything marked with real numbers
 > happened. Everything else is labelled *Planned* or 【TBD】.
 > No estimates are presented as results.
->
-> *(The go-to-market plan in §6 has its own Phase 0–3 numbering — separate from the
-> lifecycle phases above.)*
+
 
 ## Context
 
@@ -152,14 +150,16 @@ doesn't start.
 
 | Phase | When | What | Entry condition |
 | --- | --- | --- | --- |
-| **0 — Validate** | September | One social media post to test the water. Zero cost. | — |
-| **1 — Free content** | October | 3 posts/week, target +1,000 followers | First post > 50 saves **and** at least 2 interviews |
-| **2 — Productise** | Nov | Template pack, ¥199–399 | 1,000+ followers |
-| **3 — Full course** | From December | membership, ¥5,000–10,000 | **I am already hired** |
+| **Idea** | Aug 2026 | **Proposal** — define the problem, scope the original course plan | — |
+| **PoC** ← *current* | Sep 2026 | **Validate** — ran the full workflow myself (48 applications). One social media post to test the water. Zero cost. | Problem defined and scoped |
+| **Pilot** | Oct 2026 | **Free content** — 3 posts/week, target +1,000 followers. Test the five breakdowns with KinC students. | First post > 50 saves **and** at least 2 interviews |
+| **Production** | Nov 2026 | **Productise** — template pack, ¥199–399 | 1,000+ followers |
+| **Benefit realization** | From Dec 2026 | **Full course** — membership, ¥2,000–7,500 | **I am already hired** |
 
-**Phase 3 is gated on me actually getting hired.** Until then, the course does not go on sale.
+**Benefit realization is gated on me actually getting hired.** Until then, the membership
+does not go on sale — the benefit has not been realized, so there is nothing to sell.
 
-### Phase 0 deliverable
+### PoC deliverable
 
 > *I used AI to apply to 48 IT roles in Japan. 8 instant rejections, 1 interview —
 > worse than when recruiters did it for me. Today I traced every reason why.*
@@ -304,9 +304,9 @@ Two things follow:
 
 | Metric | Target | How measured | By when |
 | --- | --- | --- | --- |
-| First post saves | > 50 | Xiaohongshu analytics | End of Phase 0 |
-| Follower growth | +1,000 | Xiaohongshu analytics | End of Phase 1 |
-| First-month conversions | 3 | Order count | Month 1 post-launch |
+| First post saves | > 50 | Xiaohongshu analytics | End of PoC |
+| Follower growth | +1,000 | Xiaohongshu analytics | End of Pilot |
+| First-month conversions | 3 | Order count | Month 1 of Production |
 
 ## 12. What I learned
 
