@@ -75,7 +75,7 @@ from interviews — they are first-hand evidence from running the process end to
 | --- | --- | --- |
 | 1 | **Execution quality** — no verification step | Engineering. One-time fix. |
 | 2 | **Data freshness** — wrong source of truth | Engineering. Switch to API-verified listings. |
-| 3 | **Tool boundary** — interface mismatch | Partly fixable. Standard ATS is fast; custom portals are slow. |
+| 3 | **Tool boundary** — interface mismatch | Partly fixable. The gap is memory, not speed — see §7. |
 | 4 | **Measurement gap** — no outcome feedback | Structural. Only proxy metrics are available. |
 | 5 | **Source of authority** — facts came from the model, not from me | **Not a bug to fix. A line to draw.** |
 
@@ -174,6 +174,24 @@ Images: tracking-sheet screenshot (company names redacted) + before/after of the
 | **Output** | A verified-open role match on a daily basis, auto generated application documents and custom-portal auto-apply where every factual claim traces back to the user’s record, routine tracking|
 
 **Out of scope:** generating experience the user did not supply, interview simulation.
+
+#### Why custom-portal auto-apply is in scope, despite #3
+
+#3 found auto-apply *slower* than applying by hand. That is true — but only the first time.
+
+The defect isn't speed, it's that **the tool has no memory**. Every portal is solved from
+scratch on every application, so the same mapping work is paid for again and again.
+
+So the fix isn't "fill forms faster":
+
+1. **First application to a new portal** — the user fills it manually, and the system
+   records the field mapping for that portal.
+2. **Every application after that** — replay the mapping.
+
+The cost becomes **one-time per portal** instead of per application.
+
+**Falsifiable form:** there is a break-even — the number of applications to the same portal
+after which the recorded mapping pays for itself. 【TBD: measure it.】
 
 ### Built on
 
