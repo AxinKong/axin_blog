@@ -1,0 +1,94 @@
+---
+export const PHASES = [
+	{ key: 'idea', label: 'Idea' },
+	{ key: 'poc', label: 'PoC' },
+	{ key: 'pilot', label: 'Pilot' },
+	{ key: 'production', label: 'In production' },
+	{ key: 'benefit', label: 'Benefit realization' },
+] as const;
+
+interface Props {
+	phase: string;
+}
+const { phase } = Astro.props;
+const current = PHASES.findIndex((p) => p.key === phase);
+---
+
+<ol class="track" aria-label={`Project phase: ${PHASES[current]?.label ?? phase}`}>
+	{
+		PHASES.map((p, i) => (
+			<li
+				class:list={['step', { done: i < current, now: i === current, todo: i > current }]}
+				aria-current={i === current ? 'step' : undefined}
+			>
+				<span class="dot" />
+				<span class="label">{p.label}</span>
+			</li>
+		))
+	}
+</ol>
+
+<style>
+	.track {
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.15rem 0;
+		margin: 0 0 2rem;
+		padding: 0;
+	}
+	.step {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin: 0;
+		padding-right: 0.9rem;
+		font-size: 0.76rem;
+		color: var(--text-muted);
+		white-space: nowrap;
+	}
+	/* 阶段之间的连接线 */
+	.step:not(:last-child)::after {
+		content: '';
+		width: 0.9rem;
+		height: 1px;
+		background: var(--border);
+		margin-left: 0.5rem;
+	}
+	.dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		border: 1px solid var(--border);
+		flex-shrink: 0;
+	}
+	.done .dot {
+		background: var(--text-muted);
+		border-color: var(--text-muted);
+	}
+	.now .dot {
+		background: var(--accent);
+		border-color: var(--accent);
+		box-shadow: 0 0 0 3px var(--accent-soft);
+	}
+	.now .label {
+		color: var(--accent);
+		font-weight: 700;
+	}
+	.done .label {
+		color: var(--text-muted);
+	}
+	.todo .label {
+		opacity: 0.55;
+	}
+	@media (max-width: 640px) {
+		.step {
+			font-size: 0.72rem;
+			padding-right: 0.6rem;
+		}
+		.step:not(:last-child)::after {
+			width: 0.5rem;
+			margin-left: 0.3rem;
+		}
+	}
+</style>

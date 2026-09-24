@@ -33,7 +33,10 @@ const work = defineCollection({
 			team: z.array(z.string()).default([]),   // 其他人和他们的角色
 			timeline: z.string().optional(),
 			stack: z.array(z.string()).default([]),
-			status: z.enum(['in-progress', 'shipped', 'archived']).default('in-progress'),
+			// 项目生命周期阶段
+			phase: z
+				.enum(['idea', 'poc', 'pilot', 'production', 'benefit'])
+				.default('idea'),
 			draft: z.boolean().default(false),
 		}),
 });

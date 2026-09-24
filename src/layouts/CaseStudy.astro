@@ -5,18 +5,13 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Subscribe from '../components/Subscribe.astro';
+import PhaseTrack from '../components/PhaseTrack.astro';
 import { url } from '../lib/url';
 
 type Props = CollectionEntry<'work'>['data'];
 
-const { title, subtitle, description, heroImage, role, team, timeline, stack, status } =
+const { title, subtitle, description, heroImage, role, team, timeline, stack, phase } =
 	Astro.props;
-
-const statusLabel = {
-	'in-progress': 'In progress',
-	shipped: 'Shipped',
-	archived: 'Archived',
-}[status];
 ---
 
 <!doctype html>
@@ -29,13 +24,12 @@ const statusLabel = {
 		<main>
 			<article>
 				<header class="cs-head">
-					<p class="eyebrow">
-						Case Study
-						<span class:list={['status', status]}>{statusLabel}</span>
-					</p>
+					<p class="eyebrow">Case Study</p>
 					<h1>{title}</h1>
 					{subtitle && <p class="subtitle">{subtitle}</p>}
 				</header>
+
+				<PhaseTrack phase={phase} />
 
 				<dl class="facts">
 					<div>
@@ -98,15 +92,6 @@ const statusLabel = {
 		display: flex;
 		align-items: center;
 		gap: 0.6rem;
-	}
-	.status {
-		text-transform: none;
-		letter-spacing: 0;
-		padding: 0.1em 0.5em;
-		border-radius: 999px;
-		font-size: 0.72rem;
-		background: var(--accent-soft);
-		color: var(--accent);
 	}
 	.subtitle {
 		margin: 0.4rem 0 0;

@@ -7,10 +7,12 @@ import { getPublishedWork } from '../../lib/work';
 import { url } from '../../lib/url';
 
 const items = await getPublishedWork();
-const statusLabel: Record<string, string> = {
-	'in-progress': 'In progress',
-	shipped: 'Shipped',
-	archived: 'Archived',
+const phaseLabel: Record<string, string> = {
+	idea: 'Idea',
+	poc: 'PoC',
+	pilot: 'Pilot',
+	production: 'In production',
+	benefit: 'Benefit realization',
 };
 ---
 
@@ -36,9 +38,7 @@ const statusLabel: Record<string, string> = {
 							<a href={url(`/work/${item.id}/`)}>
 								<div class="row">
 									<h2>{item.data.title}</h2>
-									<span class:list={['status', item.data.status]}>
-										{statusLabel[item.data.status]}
-									</span>
+									<span class="phase">{phaseLabel[item.data.phase]}</span>
 								</div>
 								{item.data.subtitle && <p class="sub">{item.data.subtitle}</p>}
 								<p class="role">{item.data.role}</p>
@@ -68,7 +68,7 @@ const statusLabel: Record<string, string> = {
 	.work-list a:hover { text-decoration: none; border-color: var(--accent); }
 	.row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
 	.work-list h2 { margin: 0; font-size: 1.1rem; border: none; padding: 0; }
-	.status {
+	.phase {
 		flex-shrink: 0;
 		font-size: 0.72rem;
 		padding: 0.1em 0.55em;

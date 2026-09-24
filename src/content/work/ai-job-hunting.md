@@ -5,15 +5,19 @@ description: 'A 0→1 AI product for job seekers in Japan — built from an n=1 
 pubDate: 2026-09-23
 role: 'Product & Growth Lead'
 team: ['Steven — AI Engineer', 'Iris — UI']
-timeline: '2026-08 — ongoing (Phase 0)'
+timeline: '2026-08 — ongoing'
 stack: ['Claude Agent Skill', 'Shukatsu-ops']
-status: 'in-progress'
+phase: 'poc'
 draft: false
 ---
 
-> **Status: Phase 0 — validation.** This documents a project without a conclusion yet.
-> Everything marked with real numbers happened. Everything else is labelled
-> *Planned* or 【TBD】. No estimates are presented as results.
+> **Currently at PoC — feasibility proven on n=2, not yet validated with real users.**
+> This documents a project without a conclusion yet. Everything marked with real numbers
+> happened. Everything else is labelled *Planned* or 【TBD】.
+> No estimates are presented as results.
+>
+> *(The go-to-market plan in §6 has its own Phase 0–3 numbering — separate from the
+> lifecycle phases above.)*
 
 ## Context
 
@@ -220,8 +224,10 @@ Format:
 
 ## 09. Customer discovery
 
-**Planned.** Every insight so far comes from two people — me and one other student. The next step is testing whether
-these five breakdowns generalise.
+**This is the Pilot gate.** Every insight so far comes from two people — me and one other
+student. PoC proved the thing runs; it has not been validated with real users. That is what
+this step is for, and it is the condition for moving to Pilot: test whether these five
+breakdowns generalise beyond n=2.
 
 Interviews with job seekers in the KinC community, focused on:
 
