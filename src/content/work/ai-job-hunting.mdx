@@ -11,9 +11,11 @@ phase: 'poc'
 draft: false
 ---
 
-> **Currently at PoC — feasibility proven on n=2, not yet validated with real users.**
+import BreakdownMap from '../../components/diagrams/BreakdownMap.astro';
+import Pipeline from '../../components/diagrams/Pipeline.astro';
+
 > This documents a project without a conclusion yet. Everything marked with real numbers
-> happened. Everything else is labelled *Planned* or 【TBD】.
+> happened. Everything else is labelled 【TBD】.
 > No estimates are presented as results.
 
 
@@ -26,13 +28,7 @@ AI-powered tool set for getting hired in Japan
 
 **For job seekers**, it automates the hard parts of a job search in Japan — matching a
 resume to the right Japanese format, auto-searching for suitable job opportunities, submitting applications, and tracking every step that follows.
-It is built specifically for **new graduates and mid-level career changers in Japan** 
-
-**For individuals and teams**, it also covers AI adoption: setup and consulting that turn AI tools into actual workflows.
-
-This case study covers the job-seeker product.
-
-A three-person project: product, UI, and engineering.
+It is built specifically for **new graduates and mid-level career changers in Japan**.
 
 ### Distribution: KinC
 
@@ -70,6 +66,8 @@ Reviewing all 48 applications, the failures clustered into five points:
 
 These five are the real starting point of the project. They are not second-hand insights
 from interviews — they are first-hand evidence from running the process end to end.
+
+<BreakdownMap />
 
 ### What they point to
 
@@ -176,6 +174,8 @@ Images: tracking-sheet screenshot (company names redacted) + before/after of the
 | --- | --- |
 | **Input** | The user's own experience record + a job description |
 | **Output** | A verified-open role match on a daily basis, auto generated application documents and custom-portal auto-apply where every factual claim traces back to the user’s record, routine tracking|
+
+<Pipeline />
 
 **Out of scope:** generating experience the user did not supply, interview simulation.
 

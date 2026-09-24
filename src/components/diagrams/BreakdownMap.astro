@@ -1,0 +1,132 @@
+---
+// 求职流程 + 五条失败点落在哪一步
+// 用 currentColor / CSS 变量，light & dark 都能读
+const steps = [
+	{ x: 60, label: 'Search', sub: 'find roles' },
+	{ x: 232, label: 'Screen', sub: 'is it worth it?' },
+	{ x: 404, label: 'Prepare', sub: 'tailor the CV' },
+	{ x: 576, label: 'Apply', sub: 'submit' },
+	{ x: 748, label: 'Follow up', sub: 'what happened?' },
+];
+const marks = [
+	{ n: 2, x: 232, text: 'Stale / mismatched roles' },
+	{ n: 1, x: 404, text: 'Undetected CV error' },
+	{ n: 5, x: 404, text: 'AI-authored ≠ AI-polished', second: true },
+	{ n: 3, x: 576, text: 'Auto-apply slower than manual' },
+	{ n: 4, x: 748, text: 'No signal returns' },
+];
+---
+
+<figure class="diagram">
+	<svg viewBox="0 0 840 300" role="img" aria-labelledby="bd-title bd-desc">
+		<title id="bd-title">Where the five breakdowns occur in the job-search flow</title>
+		<desc id="bd-desc">
+			A five-stage flow — Search, Screen, Prepare, Apply, Follow up. Breakdown 2 occurs at
+			Screen; breakdowns 1 and 5 at Prepare; breakdown 3 at Apply; breakdown 4 at Follow up.
+			No breakdown occurs at Search.
+		</desc>
+
+		<!-- 主流程线 -->
+		<line x1="60" y1="60" x2="748" y2="60" class="spine" />
+
+		{
+			steps.map((s) => (
+				<g>
+					<circle cx={s.x} cy="60" r="7" class="node" />
+					<text x={s.x} y="34" class="step">{s.label}</text>
+					<text x={s.x} y="92" class="sub">{s.sub}</text>
+				</g>
+			))
+		}
+
+		<!-- 失败点 -->
+		{
+			marks.map((m) => {
+				const y = m.second ? 196 : 140;
+				return (
+					<g>
+						<line x1={m.x} y1="70" x2={m.x} y2={y - 16} class="drop" />
+						<circle cx={m.x} cy={y} r="13" class="mark" />
+						<text x={m.x} y={y + 4} class="marknum">{m.n}</text>
+						<text x={m.x} y={y + 34} class="marktext">{m.text}</text>
+					</g>
+				);
+			})
+		}
+
+		<text x="60" y="140" class="clean">no breakdown here</text>
+	</svg>
+	<figcaption>
+		Four of the five breakdowns happen <em>after</em> a role has been chosen — the failure is
+		in execution and verification, not in finding roles.
+	</figcaption>
+</figure>
+
+<style>
+	.diagram {
+		margin: 2rem 0;
+	}
+	svg {
+		width: 100%;
+		height: auto;
+		overflow: visible;
+	}
+	.spine {
+		stroke: var(--border);
+		stroke-width: 2;
+	}
+	.node {
+		fill: var(--bg);
+		stroke: var(--text-muted);
+		stroke-width: 2;
+	}
+	.step {
+		fill: var(--text);
+		font-size: 15px;
+		font-weight: 700;
+		text-anchor: middle;
+	}
+	.sub,
+	.clean {
+		fill: var(--text-muted);
+		font-size: 12px;
+		text-anchor: middle;
+	}
+	.clean {
+		font-style: italic;
+		opacity: 0.7;
+	}
+	.drop {
+		stroke: var(--border);
+		stroke-width: 1.5;
+		stroke-dasharray: 3 3;
+	}
+	.mark {
+		fill: var(--accent-soft);
+		stroke: var(--accent);
+		stroke-width: 1.5;
+	}
+	.marknum {
+		fill: var(--accent);
+		font-size: 13px;
+		font-weight: 700;
+		text-anchor: middle;
+	}
+	.marktext {
+		fill: var(--text-muted);
+		font-size: 12px;
+		text-anchor: middle;
+	}
+	figcaption {
+		margin-top: 0.8rem;
+		font-size: 0.85rem;
+		color: var(--text-muted);
+		line-height: 1.6;
+		text-align: center;
+	}
+	@media (max-width: 600px) {
+		.step { font-size: 19px; }
+		.sub, .marktext, .clean { font-size: 15px; }
+		.marknum { font-size: 16px; }
+	}
+</style>
