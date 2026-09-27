@@ -5,6 +5,7 @@ import Header from '../../components/Header.astro';
 import { SITE_TITLE } from '../../consts';
 import { getPublishedWork } from '../../lib/work';
 import { url } from '../../lib/url';
+import InvestorCard from '../../components/InvestorCard.astro';
 
 const items = await getPublishedWork();
 const phaseLabel: Record<string, string> = {
@@ -48,6 +49,8 @@ const phaseLabel: Record<string, string> = {
 				}
 			</ul>
 			{items.length === 0 && <p class="empty">No public case studies yet.</p>}
+
+			<InvestorCard />
 		</main>
 		<Footer />
 	</body>

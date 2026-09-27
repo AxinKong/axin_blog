@@ -1,0 +1,170 @@
+---
+title: 'HerWheel — Driving Coaches for Women in Japan'
+subtitle: 'A two-sided marketplace matching women learning to drive with vetted female coaches. Built, deployed, and not yet validated.'
+description: 'A 0→1 marketplace for women drivers in Japan — the problem, the regulatory constraint that shaped the payment flow, and an honest account of building before validating.'
+pubDate: 2026-09-25
+role: 'Founder — product, engineering, and go-to-market'
+team: ['Solo']
+timeline: '2026-06 — ongoing'
+stack: ['React', 'Node', 'Supabase', 'Stripe Connect', 'Vercel', 'Railway', 'AWS S3']
+phase: 'idea'
+draft: true
+---
+
+> **Status: built but unvalidated.** The platform is deployed and functional.
+> It has **0 coaches, 0 bookings, 0 community posts**. Nothing about demand has
+> been proven yet, and this case study does not pretend otherwise.
+
+## Context
+
+**HerWheel（ハーホイール）** is a two-sided marketplace that matches women in Japan who
+want to drive with **vetted female driving coaches and practice partners** in their area.
+
+Live: [herwheel-frontend.vercel.app](https://herwheel-frontend.vercel.app) · JP / EN / ZH
+
+## 01. Problem
+
+Japan has a large population of women who hold a driver's licence but have not driven
+for years — often stopping after marriage or childbirth, then needing to drive again for
+school runs and family logistics. There is also a sizeable group of foreign women living
+in Japan for whom language and unfamiliar traffic norms add another layer.
+
+Their anxieties are specific, and driving schools do not cover them:
+
+| | |
+| --- | --- |
+| 路上に出るのが怖い | Afraid of driving on real roads |
+| 駐車が苦手 | Can't park confidently |
+| 子どもを乗せた送迎が不安 | Nervous driving with children in the car |
+| 夜間運転が怖い | Afraid of driving at night |
+| 高速道路が怖い | Afraid of the expressway |
+| レンタカー運転が怖い | Afraid of renting a car on a trip |
+
+These are *post-licence* problems. Driving schools teach you to pass a test; nobody
+teaches you to merge onto the Shuto Expressway with two kids in the back.
+
+## 02. The gap
+
+There is persistent demand to be taught **by a woman** — and almost no service in Japan
+lets you specify a female instructor.
+
+That is the whole opening: not a better booking UX, not cheaper lessons. A preference that
+exists, is spoken about, and has no supply attached to it.
+
+## 03. Product
+
+Three functions:
+
+| | |
+| --- | --- |
+| **Coach onboarding** | Licence upload is mandatory; every coach is manually vetted before the profile goes live |
+| **Search & match** | Filter by prefecture/city, transmission (AT / MT / EV), speciality (expressway, parallel parking, night driving, test prep, road-trip prep, city driving) and hourly rate |
+| **Community** | Driving tips, road-trip write-ups, used-car buying experiences — the reason to come back after the lessons end |
+
+**Why vetting is not optional.** The entire premise is that a nervous learner feels safe.
+A C2C marketplace where anyone can list themselves would destroy the one thing the product
+is selling. Manual review is slow and doesn't scale — and it is the correct trade at this
+stage.
+
+**Why the community exists.** Lessons end. Without a reason to return, every user is a
+one-off transaction. The community is a retention bet, not a feature request.
+
+## 04. Revenue model — and the constraint that shaped it
+
+Learners pay through the platform. HerWheel takes **20%**; 80% goes to the coach via
+Stripe Connect.
+
+### The regulatory constraint
+
+Holding money on behalf of a third party in Japan is a **funds-transfer business
+(資金移動業)** and requires an FSA licence. For a solo founder, that is not a realistic
+path.
+
+So the payment flow was designed around the exemptions in the revised Payment Services Act:
+
+1. **Platform-operator exemption** — the platform is an indispensable part of how the
+   contract between learner and coach comes into existence, then collects and forwards
+   payment under that contract.
+2. **Escrow-type exemption** — funds are held only until the service is delivered, then
+   released. Explicitly carved out for marketplace and sharing-economy services.
+
+The booking flow follows from that, not from UX preference:
+
+| Event | What happens to the money |
+| --- | --- |
+| Booking | Learner pays immediately; funds sit in the platform balance |
+| Coach accepts | Pure acceptance — no money movement |
+| Coach cancels (any time) | Full refund to learner |
+| Learner cancels > 24h before | Full refund |
+| Learner cancels < 24h before | Cancel button locked; dispute flow only |
+| Service delivered | Confirm receipt / raise a dispute / auto-confirm after 48h |
+| Dispute | Admin refunds or releases to coach |
+
+> The 24-hour lock and the 48-hour auto-confirm are not UX decisions. They are what keeps
+> the flow inside the escrow exemption while stopping a learner from consuming a coach's
+> time and then walking away.
+
+**【TBD: this analysis is my own reading of the statute, not legal advice.
+It needs review by a qualified lawyer before launch.】**
+
+## 05. Where it actually is
+
+The platform is deployed and works end to end: auth, coach onboarding with licence upload,
+search, booking, Stripe Connect payments, cancellation and dispute handling, an admin
+console, and a community board — in three languages.
+
+**And it has zero coaches, zero bookings, and zero posts.**
+
+| | |
+| --- | --- |
+| Coaches listed | 0 |
+| Bookings | 0 |
+| Community posts | 0 |
+| Demand validated | No |
+
+## 06. What the plan says to do next
+
+The business plan is explicit that the biggest risk **is not competition** — it is whether
+women will actually pay extra to be taught by a woman.
+
+**Phase 1 — Tokyo only, 3 coaches, 3 months**
+
+| | |
+| --- | --- |
+| Landing page | Coach profiles and one booking path. Nothing else. |
+| Supply | Recruit and vet 3 female coaches in Tokyo |
+| Channels | Test Xiaohongshu, Instagram and SEO; find which one works |
+| Milestone | **20 customers who actually pay**, within 3 months |
+
+If those 20 convert and some return or refer, the demand hypothesis holds and the full
+platform goes live. If not, it doesn't.
+
+**Unit economics assumed in the plan**: ¥4,000/hour average lesson, ~70 lessons/month at
+MVP scale → ¥280,000 GMV → ¥56,000 revenue at a 20% take rate. Loss-making by design
+during validation. 【TBD: none of this is tested.】
+
+## 07. The honest part
+
+**I built the platform before validating the demand.**
+
+The riskiest assumption — that this preference converts into payment — is the one thing
+the code cannot answer. A landing page with three coaches and a booking form would have
+tested it in a few weeks. Instead there is a full marketplace with escrow, dispute
+resolution and three-language support, serving nobody.
+
+The build was not wasted: it exists, it works, and it is ready the moment demand shows up.
+But the order was wrong, and the plan's own Phase 1 is effectively a correction — go back
+and do the cheap test that should have come first.
+
+**【TBD: what the 3-coach Tokyo test actually returns.】**
+
+## My Role
+
+Solo — everything below is mine.
+
+- Problem definition and market gap analysis
+- Product scope, vetting policy, retention design
+- Regulatory research and payment-flow design
+- Full-stack build and deployment
+- Business plan and financial model
+- Go-to-market plan (untested)

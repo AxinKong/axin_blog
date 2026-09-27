@@ -45,3 +45,25 @@ export const NEWSLETTER = {
 	note: '新文章发布时收到邮件。不发广告，随时可退订。',
 	buttonText: '订阅',
 };
+
+// 作品集页底部的联系区，面向两类人：想外包开发/运维的企业，和投资人。
+// 面向整个作品集，不绑定单个项目 —— 以后加新案例不用改这里。
+// ⚠️ 每个数字投资人都会当真，改之前确认口径。enabled: false 可整块关闭。
+export const INVESTOR = {
+	enabled: true,
+	title: 'For business / investors',
+	blurb:
+		'Five years in technical project management, three of them in Tokyo. I build early-stage products and deliver IT projects for the Japan market.',
+	// 承接业务的说明，显示在数字上方
+	availability:
+		'Available for contract work. Based in Japan as a sole proprietor (個人事業主), taking on AI product development and project delivery.',
+	// 数字格子。留空则整块不显示。
+	// ⚠️ 放任何数字都要标清楚是哪个主体的业绩，别让人误读成作品集里项目的成绩。
+	stats: [],
+	line: "Whether you need an AI product built and run, or you invest in my projects — I'd like to talk.",
+	email: 'kongaxing@gmail.com',
+	subject: 'Enquiry — Axin',
+	ctaText: 'Get in touch',
+	linkedin: 'https://www.linkedin.com/in/axin-k-15a151196/',
+	linkedinText: 'LinkedIn',
+};

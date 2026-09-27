@@ -1,0 +1,134 @@
+---
+import { INVESTOR } from '../consts';
+
+const mailto = `mailto:${INVESTOR.email}?subject=${encodeURIComponent(INVESTOR.subject)}`;
+---
+
+{
+	INVESTOR.enabled && (
+		<aside class="inv">
+			<p class="eyebrow">{INVESTOR.title}</p>
+			<p class="blurb">{INVESTOR.blurb}</p>
+
+			{INVESTOR.availability && <p class="avail">{INVESTOR.availability}</p>}
+
+			{INVESTOR.stats.length > 0 && (
+			<dl class="stats">
+				{INVESTOR.stats.map((s) => (
+					<div>
+						<dt>{s.value}</dt>
+						<dd>{s.label}</dd>
+					</div>
+				))}
+			</dl>
+			)}
+
+			<p class="line">{INVESTOR.line}</p>
+
+			<div class="actions">
+				<a class="cta" href={mailto}>
+					{INVESTOR.ctaText} →
+				</a>
+				{INVESTOR.linkedin && (
+					<a class="secondary" href={INVESTOR.linkedin} target="_blank" rel="noopener">
+						{INVESTOR.linkedinText}
+					</a>
+				)}
+			</div>
+		</aside>
+	)
+}
+
+<style>
+	.inv {
+		margin-top: 3.5rem;
+		padding: 2rem 1.6rem;
+		border: 1px solid var(--accent);
+		border-radius: 12px;
+		background: var(--accent-soft);
+	}
+	.eyebrow {
+		margin: 0 0 0.7rem;
+		font-size: 0.72rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: var(--accent);
+	}
+	.blurb {
+		margin: 0 0 1.4rem;
+		font-size: 0.95rem;
+		line-height: 1.7;
+		color: var(--text);
+	}
+	.avail {
+		margin: 0 0 1.4rem;
+		padding: 0.9rem 1.1rem;
+		border-radius: 8px;
+		background: var(--bg);
+		border: 1px solid var(--border);
+		font-size: 0.9rem;
+		line-height: 1.65;
+		color: var(--text);
+	}
+	.stats {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+		gap: 1rem;
+		margin: 0 0 1.4rem;
+		padding: 1rem 0;
+		border-top: 1px solid var(--border);
+		border-bottom: 1px solid var(--border);
+	}
+	.stats div {
+		margin: 0;
+	}
+	.stats dt {
+		font-size: 1.5rem;
+		font-weight: 700;
+		line-height: 1.1;
+		color: var(--text);
+		font-variant-numeric: tabular-nums;
+	}
+	.stats dd {
+		margin: 0.25rem 0 0;
+		font-size: 0.74rem;
+		line-height: 1.4;
+		color: var(--text-muted);
+	}
+	.line {
+		margin: 0 0 1.3rem;
+		font-size: 0.95rem;
+		color: var(--text);
+	}
+	.actions {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	.cta {
+		display: inline-block;
+		padding: 0.6em 1.5em;
+		border-radius: 8px;
+		background: var(--accent);
+		color: #fff;
+		font-size: 0.95rem;
+		font-weight: 600;
+	}
+	.cta:hover {
+		text-decoration: none;
+		opacity: 0.9;
+	}
+	.secondary {
+		font-size: 0.85rem;
+		color: var(--text-muted);
+	}
+	.secondary:hover {
+		color: var(--accent);
+	}
+	@media (max-width: 480px) {
+		.inv { padding: 1.5rem 1.2rem; }
+		.stats dt { font-size: 1.3rem; }
+	}
+</style>

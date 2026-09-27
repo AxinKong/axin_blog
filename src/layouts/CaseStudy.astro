@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Subscribe from '../components/Subscribe.astro';
 import PhaseTrack from '../components/PhaseTrack.astro';
+import InvestorCard from '../components/InvestorCard.astro';
 import { url } from '../lib/url';
 
 type Props = CollectionEntry<'work'>['data'];
@@ -68,6 +69,8 @@ const { title, subtitle, description, heroImage, role, team, timeline, stack, ph
 					<slot />
 				</div>
 			</article>
+
+			<InvestorCard />
 
 			<Subscribe />
 
