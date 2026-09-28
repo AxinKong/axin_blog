@@ -1,0 +1,136 @@
+---
+title: 'Trip Planner Product'
+subtitle: 'A destination-specific trip planner product, using Switzerland as a pilot project — built for four people and taken on the actual trip.'
+description: 'A trip-planning tool that survived a real nine-day trip — and the product thesis underneath it: generic planners fail because the value is in destination-specific knowledge.'
+pubDate: 2026-09-28
+role: 'Product & trip planning'
+team: ['Iris.H — build & UI']
+timeline: '2026-07 — pilot completed'
+stack: ['HTML', 'JavaScript', 'GitHub Pages']
+phase: 'pilot'
+draft: false
+---
+
+> **Pilot complete — with a caveat.** Four people used this on a real nine-day trip through
+> Switzerland. It held up. What is validated is that **the tool works in real conditions** —
+> not that strangers would pay for it. The next phase is production, and selling it.
+
+## Context
+
+A nine-day trip through Switzerland for four adults — Zürich → Luzern → Stoos → Interlaken →
+Grindelwald → Zermatt — with **scope, timeline, budget and cost** planned and tracked in a
+single tool we built for it.
+
+Live: [ralinzain-star.github.io/Switzerland](https://ralinzain-star.github.io/Switzerland/)
+
+## 01. Why not just use an existing planner
+
+We started with the usual options — Notes, Word docs, Notion templates, TripIt, Google Maps
+lists, a shared spreadsheet.
+
+All of them handle the same 10% of the problem: what day, what city, what hotel.
+
+None of them covered the rest of what we actually got stuck on:
+
+- What must be done *before* the trip, and by whom
+- What transport between each leg, and whether a rail pass pays for itself
+- What activity at each stop, and how long it really takes
+- How much each person has paid, and how to split the bill proportionally
+- How much budget is left, and whether **spent + forecast** will overrun it
+
+**Generic planners are horizontal.** They cover every destination shallowly. The pain is
+**vertical** — it lives in the specifics of every single place and activity.
+
+## 02. The product decisions
+
+Most of what makes this useful is not a feature. It is an all-in-one decision optimizer.
+
+### Must-do before trip
+
+For a working traveller, annual leave, attention, energy and before-trip preparation are the scarce resources. 
+The tool organises this by six dimensions: 
+visa and certificates, money and payment, mobile sim and applications, forbidden items and alternative items, 
+luggage and clothes, notes of reservation-needing places and events
+
+### Hotel and ticket booking states, not a booking list
+
+已訂 / 待訂 / 建議購買 / 比價 as explicit states, with purchase recommendations derived from
+the itinerary. Nothing falls through the gap between *"we should book that"* and *"did anyone
+book that?"*
+
+### Daily calendar
+
+Every day: where, what activity, at what time — laid out explicitly.
+
+### Map library with every spot marked
+
+Exportable as GeoJSON, so the plan opens in whatever map tool each person already uses.
+
+### Cost and Budget as a live constraint, not a summary
+
+| Phase | What it holds |
+| --- | --- |
+| Before departure | **Estimated** total per person, flights included |
+| [During the trip](https://www.splitwise.com) | **Actual** spend, logged as you go |
+| At any moment | Spent + forecast, against the budget |
+
+The point is not only record-keeping. It is being able to answer *"how much has each person
+paid, and how do we split this proportionally?"* and *"how much budget is left, and will
+spent + forecast overrun it?"* — at any moment, not at the end.
+
+Noted that the team members are from different countries and use different currencies.
+
+TWD / CHF / JPY with a stated conversion line. Prices are quoted in one currency, paid in
+another, settled between four people in a third. We used the Splitwise API for the live
+settlement rather than rebuilding it — a single-currency tool would have pushed that work
+back into a spreadsheet, which is exactly what we were trying to leave behind.
+
+### A retrospective built in
+
+Most planners end when the trip starts. This one has **旅程回顧** — a place to record what
+actually happened. We created a cloud folder to let every member upload their photos and videos 
+during the trip
+
+That is deliberate: it turns a one-off artefact into an input for the next trip. It is the
+feature that makes a *series* of trips better, not just this one.
+
+## 03. What the pilot proved
+
+Four people, nine days, six regions, real bookings, real money.
+
+| | |
+| --- | --- |
+| Used on the actual trip | Yes |
+| Held up in the field | Yes — no fallback to spreadsheets |
+| Users | 4 |
+| Paying users | **0** |
+
+**Validated:** the tool works under real conditions — bad signal, changing plans, split
+payments, luggage logistics. That is not nothing. Most planning tools are quietly abandoned
+on day two in favour of a group chat.
+
+**Not validated:** that anyone outside the pilot group wants this, or would pay for it.
+
+## 04. Next phase — production and selling it
+
+If the value really is vertical, then the product is not "a better trip planner." It is a
+**destination-specific itinerary product**: one build per destination, sold as a package or a
+service.
+
+That is a real market. Custom trip planning is already a paid service in the Chinese-speaking
+travel market. What it lacks is a tool that makes each plan reusable instead of hand-built
+every time — which is exactly what the Switzerland pilot produced.
+
+**The untested assumption:** that the depth which made this useful to us is what people pay
+for — rather than convenience, price, or simply not wanting to plan at all.
+
+**【TBD: the next test is a landing page, one destination package, and one paying customer.】**
+
+## My Role
+
+**Product & trip planning** — problem framing, what the tool optimises for (leave days over
+calendar days), the budget and split model, ticket and booking states, retrospective design,
+and the itinerary itself.
+
+**Iris.H — build & UI.** The implementation and interface are hers; the
+[repository](https://github.com/ralinzain-star/Switzerland) is under her account.
