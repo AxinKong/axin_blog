@@ -1,0 +1,277 @@
+---
+title: 'DriveMate Japan'
+subtitle: 'A platform where nervous drivers in Japan choose their own coach.'
+description: 'A 0→1 driving-coach platform for Japan — three demand segments, the regulatory constraint that shaped the payment flow, and an honest account of building before validating.'
+pubDate: 2026-09-25
+role: 'Founder — product, engineering, and go-to-market'
+team: ['Solo']
+timeline: '2026-06 — ongoing'
+stack: ['React', 'Node', 'Supabase', 'Stripe Connect', 'Vercel', 'Railway', 'AWS S3']
+phase: 'idea'
+draft: true
+---
+
+> **Status: built but unvalidated.** The platform is deployed and functional.
+> It has **0 coaches, 0 bookings, 0 community posts**. Nothing about demand has
+> been proven yet, and this case study does not pretend otherwise.
+
+## Context
+
+**DriveMate Japan** is a two-sided platform that matches people in Japan who are nervous
+about driving with **vetted coaches and practice partners** nearby — chosen by the learner,
+by area, language, speciality and hourly rate.
+
+Live: [drivematejapan.vercel.app](https://drivematejapan.vercel.app) · JP / EN / ZH
+
+## 01. Problem
+
+Japan has a large population of licence holders who have not driven for years. Many are
+women who stopped after marriage or childbirth and then need to drive again for school runs
+and family logistics. Many are foreign residents for whom language and unfamiliar traffic
+norms add a second layer on top of rusty skills.
+
+Their anxieties are specific, and driving schools do not cover them:
+
+| | |
+| --- | --- |
+| 路上に出るのが怖い | Afraid of driving on real roads |
+| 駐車が苦手 | Can't park confidently |
+| 子どもを乗せた送迎が不安 | Nervous driving with children in the car |
+| 夜間運転が怖い | Afraid of driving at night |
+| 高速道路が怖い | Afraid of the expressway |
+| レンタカー運転が怖い | Afraid of renting a car on a trip |
+
+These are *post-licence* problems. Driving schools teach you to pass a test; nobody
+teaches you to merge onto the Shuto Expressway with two kids in the back.
+
+## 02. The gap
+
+Japan's driving schools assign you an instructor. You don't pick them — and once you have
+the licence, the relationship ends. There is no established way to go back and practise with
+someone.
+
+So for a new or rusty driver, the thing that would help most is the one thing nobody in Japan
+offers: **choosing who teaches you.**
+
+That is the whole opening — not a better booking UX, not cheaper lessons. Just being able to
+pick the person: someone who speaks your language, someone you feel at ease with, someone who
+teaches the exact thing you are afraid of.
+
+## 03. Three demand segments
+
+The original wedge is trust: a nervous learner wants to be taught by someone she can relax
+with. That same wedge opens onto three distinct segments, with different prices and very
+different acquisition paths.
+
+| Segment | Who | The sentence they say | Price / 2h |
+| --- | --- | --- | --- |
+| **Paper Driver** | Japanese, licensed, hasn't driven in years | 「久しぶりに運転したい」 | ¥12,000–15,000 |
+| **Foreign Driver** | Foreign residents with a Japanese licence | *"I have a licence but I'm not confident driving in Japan."* | ¥15,000–20,000 |
+| **Rental Car Driver** | Inbound tourists about to rent a car | *"I'm renting a car in Japan next week."* | ¥10,000–15,000 |
+
+Each plays a different role:
+
+- **Paper Driver — stable cash flow.** Well-understood need, existing competitors, predictable demand.
+- **Foreign Driver — the margin.** Language plus Japanese road rules plus cross-cultural
+  explanation is a genuine premium, and almost nobody supplies it.
+- **Rental Car Driver — the growth engine.** See §05.
+
+## 04. Market model
+
+> **Read the numbers as a model, not as facts.** Figures marked *public* are sourced below;
+> figures marked *assumption* are mine. Nothing here has been validated by a single paying
+> customer.
+
+### Serviceable market
+
+| Segment | Basis | Users/year | Price | GMV/year |
+| --- | --- | --- | --- | --- |
+| Paper Driver | One specialist platform logged **70,036 bookings, 2018–2025** ¹; a white paper estimates **62,222 learners across 260,625 lessons** — ~4.19 each ² | ~80,000 *(assumption)* | ¥13,500 ² | **¥1.08bn** |
+| Foreign Driver | **1,254,500** foreign residents held a Japanese licence at end-2024, **+27.3% since 2020** ³ (of **4.125m** foreign residents ⁴); 5–8% lack confidence driving here *(assumption)* | ~80,000 *(assumption)* | ¥17,500 | **¥1.40bn** |
+| Rental Car Driver | **42.68m** inbound visitors in 2025 ⁵; MLIT surveys put rental-car use at **~12%** of visitors ⁶, and recorded **1.696m** foreign rental users in 2019 / **1.808m** in 2018 ⁶. At a 7–8% rate, industry analysis estimates **2.5–2.9m** foreign rental drivers in 2024 ⁷ | ~225,000 *(assumption: 5–10% want preparation)* | ¥12,000 | **¥2.70bn** |
+| | | | **Total** | **¥5.18bn** |
+
+At a 20–30% take rate, that is **¥1.04–1.55bn/year** in platform revenue **at full coverage** —
+which is a ceiling, not a forecast.
+
+**Sources** — ¹ platform press release · ² industry white paper (note) · ³ 内閣府 (Cabinet
+Office) · ⁴ 法務省 (Ministry of Justice) · ⁵ JNTO 日本政府観光局 · ⁶ 国土交通省 (MLIT) ·
+⁷ ライブドアニュース
+【TBD: replace each with a direct link before this goes in front of an investor.】
+
+**The number that matters is not the ceiling.** It is that the two non-obvious segments
+(Foreign, Rental) are together worth more than the obvious one — and that nobody is serving
+them.
+
+### Staged targets
+
+| Stage | Paper | Foreign | Rental | Users/yr | GMV | Platform @25% |
+| --- | --- | --- | --- | --- | --- | --- |
+| **1 — Validate** | 500 | 500 | 1,000 | 2,000 | ¥30m | **¥7.5m** |
+| **2 — Prove it runs** | 3,000 | 3,000 | 10,000 | 16,000 | ¥240m | **¥60m** |
+| **3 — National** | 8,000 | 10,000 | 30,000 | 48,000 | ¥720m | **¥180m** |
+
+Stage 2 — roughly **¥60m/year** — is already a business worth running. Stage 3 is a real
+platform. Neither requires winning the whole market.
+
+## 05. Why rental cars are the growth engine
+
+Paper Driver demand is **pull**: someone decides they need help, searches, finds a coach.
+That is slow and expensive to acquire.
+
+Rental Car demand can be **placed at the moment of decision**. A tourist booking a car in
+Hokkaido through Klook, KKday, Booking or the rental company itself can see, on the payment
+page:
+
+> *First time driving in Japan? Take a 90-minute Japan Driving Preparation lesson.*
+
+That is a distribution channel, not an ad. Acquisition cost could be far below search ads,
+and the intent is already established — they have just committed to driving in a country
+they don't know.
+
+**There is a real safety argument underneath it.** Published analysis puts the accident rate
+for foreign tourists on leisure rentals at around **3.0%**, against **0.7%** for Japanese
+drivers 【TBD: source not yet confirmed】. That number is why rental companies and insurers have a
+reason to say yes.
+
+## 06. Supply — where the coaches come from
+
+The instinct is to recruit professional driving-school instructors. That makes the platform
+heavy and expensive before it has demand. Four sources, in order of how early they can be used:
+
+| Source | Why | Pay / 2h |
+| --- | --- | --- |
+| **Retired or part-time school instructors** | They know how to *teach*, not just how to drive | ¥5,000–8,000 |
+| **Experienced everyday drivers** | The largest supply pool: 10+ years driving, no major accidents, willing to work weekends | — |
+| **Foreign residents who drive here** | Chinese → Chinese, Korean → Korean, English → English. The differentiator nobody else has | — |
+| **Rental companies, driving schools, hotels** | They already have cars, space and instructors. We bring customers, multilingual support and the order system | Revenue share |
+
+That last row matters most: **the platform never needs to own a car.**
+
+Three coach types follow from this:
+
+| Type | For | Price |
+| --- | --- | --- |
+| 🟢 **Certified Instructor** | Paper Driver | ¥15,000–20,000 |
+| 🔵 **Driving Buddy** — vetted experienced driver | Foreign Driver | ¥12,000–18,000 |
+| 🟠 **Japan Driving Guide** — bilingual | Tourists | ¥12,000–20,000 |
+
+**【TBD: paid driving instruction has its own licensing, vehicle and insurance requirements.
+"Has a licence" is not the same as "may be paid to teach." This needs checking per coach
+type before launch.】**
+
+## 07. Product
+
+Three functions:
+
+| | |
+| --- | --- |
+| **Coach onboarding** | Licence upload is mandatory; every coach is manually vetted before the profile goes live |
+| **Search & match** | Filter by prefecture/city, transmission (AT / MT / EV), speciality (expressway, parallel parking, night driving, test prep, road-trip prep, city driving) and hourly rate |
+| **Community** | Driving tips, road-trip write-ups, used-car buying experiences — the reason to come back after the lessons end |
+
+**Why vetting is not optional.** The entire premise is that a nervous learner feels safe.
+A C2C marketplace where anyone can list themselves would destroy the one thing the product
+is selling. Manual review is slow and doesn't scale — and it is the correct trade at this
+stage.
+
+**Why the community exists.** Lessons end. Without a reason to return, every user is a
+one-off transaction. The community is a retention bet, not a feature request.
+
+## 08. Revenue model — and the constraint that shaped it
+
+Learners pay through the platform. DriveMate takes **20%**; 80% goes to the coach via
+Stripe Connect.
+
+### The regulatory constraint
+
+Holding money on behalf of a third party in Japan is a **funds-transfer business
+(資金移動業)** and requires an FSA licence. For a solo founder, that is not a realistic
+path.
+
+So the payment flow was designed around the exemptions in the revised Payment Services Act:
+
+1. **Platform-operator exemption** — the platform is an indispensable part of how the
+   contract between learner and coach comes into existence, then collects and forwards
+   payment under that contract.
+2. **Escrow-type exemption** — funds are held only until the service is delivered, then
+   released. Explicitly carved out for platform and sharing-economy services.
+
+The booking flow follows from that, not from UX preference:
+
+| Event | What happens to the money |
+| --- | --- |
+| Booking | Learner pays immediately; funds sit in the platform balance |
+| Coach accepts | Pure acceptance — no money movement |
+| Coach cancels (any time) | Full refund to learner |
+| Learner cancels > 24h before | Full refund |
+| Learner cancels < 24h before | Cancel button locked; dispute flow only |
+| Service delivered | Confirm receipt / raise a dispute / auto-confirm after 48h |
+| Dispute | Admin refunds or releases to coach |
+
+> The 24-hour lock and the 48-hour auto-confirm are not UX decisions. They are what keeps
+> the flow inside the escrow exemption while stopping a learner from consuming a coach's
+> time and then walking away.
+
+**【TBD: this analysis is my own reading of the statute, not legal advice.
+It needs review by a qualified lawyer before launch.】**
+
+## 09. Where it actually is
+
+The platform is deployed and works end to end: auth, coach onboarding with licence upload,
+search, booking, Stripe Connect payments, cancellation and dispute handling, an admin
+console, and a community board — in three languages.
+
+**And it has zero coaches, zero bookings, and zero posts.**
+
+| | |
+| --- | --- |
+| Coaches listed | 0 |
+| Bookings | 0 |
+| Community posts | 0 |
+| Demand validated | No |
+
+## 10. Phased plan — gated on evidence, not dates
+
+The plan's own words: the biggest risk **is not competition**. It is whether anyone pays.
+
+| Phase | When | What | Entry condition |
+| --- | --- | --- | --- |
+| **Idea** ← *current* | Jun 2026 | Business plan — problem, segments, regulatory structure | — |
+| **PoC** | Jun–Jul 2026 | Platform built and deployed: onboarding, search, booking, Stripe Connect, disputes, 3 languages | — |
+| **Pilot** | 【TBD】 | **10 coaches, 30 users, Tokyo only.** 3 Chinese / 2 English / 2 Japanese / 1 Korean / 2 Paper Driver | Coaches recruited and vetted |
+| **Production** | 【TBD】 | Scale supply to 30–50 coaches, open Osaka / Kyoto | **20 of the 30 pilot users actually pay** |
+| **Benefit realization** | 【TBD】 | 500 orders/month, then Hokkaido / Okinawa; embed at rental-car checkout | Stage 2 economics hold |
+
+**The gate that matters is Production's.** Not signups, not interest — twenty people who
+hand over ¥15,000.
+
+## 11. The honest part
+
+**I built the platform before validating the demand.**
+
+The riskiest assumption — that this preference converts into payment — is the one thing
+the code cannot answer. Ten coaches, an Instagram account and a LINE ID could have matched
+the first hundred bookings **by hand**, and would have answered it in a few weeks. Instead
+there is a full platform with escrow, dispute resolution and three-language support,
+serving nobody.
+
+The market model in §4 has the same shape of error waiting in it: it is arithmetic on
+assumptions. ¥5.18bn is not a finding. **Twenty people paying ¥15,000 would be.**
+
+The build was not wasted: it exists, it works, and it is ready the moment demand shows up.
+But the order was wrong, and the plan's own Phase 1 is effectively a correction — go back
+and do the cheap test that should have come first.
+
+**【TBD: what the 3-coach Tokyo test actually returns.】**
+
+## My Role
+
+Solo — everything below is mine.
+
+- Problem definition and market gap analysis
+- Product scope, vetting policy, retention design
+- Regulatory research and payment-flow design
+- Full-stack build and deployment
+- Business plan and financial model
+- Go-to-market plan (untested)
