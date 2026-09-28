@@ -38,8 +38,9 @@ None of them covered the rest of what we actually got stuck on:
 - How much each person has paid, and how to split the bill proportionally
 - How much budget is left, and whether **spent + forecast** will overrun it
 
-**Generic planners are horizontal.** They cover every destination shallowly. The pain is
-**vertical** — it lives in the specifics of every single place and activity.
+**Generic planners go wide.** They cover every destination in the world, and none of them in
+any depth. Everything we got stuck on was in the depth — one specific place, one specific
+activity, one specific connection.
 
 ## 02. The product decisions
 
@@ -110,26 +111,63 @@ abandoned on day two in favour of a group chat.
 
 **Not validated:** that anyone outside the pilot group wants this, or would pay for it.
 
-## 04. Next phase — production and selling it
+## 04. Next phase — run B first, build toward A
 
-If the value really is vertical, then the product is not "a better trip planner." It is a
-**destination-specific itinerary product**: one build per destination, sold as a package or a
-service.
+The Switzerland site is not the product. It is **one output**. Two ways to turn it into
+something sellable are on the table, and they are genuinely different bets.
 
-That is a real market. Custom trip planning is already a paid service in the Chinese-speaking
-travel market. What it lacks is a tool that makes each plan reusable instead of hand-built
-every time — which is exactly what the Switzerland pilot produced.
+### Path A — the planner as a skill
 
-**The untested assumption:** that the depth which made this useful to us is what people pay
-for — rather than convenience, price, or simply not wanting to plan at all.
+A **skill**: you give it countries, cities, addresses, days and a budget, and it produces the
+plan as a live website — itinerary, pre-trip checklist, booking states, budget model, map.
 
-**【TBD: the next test is a landing page, one destination package, and one paying customer.】**
+This works because of a split we only noticed after building it by hand — **the answers
+change every trip, but the questions don't**:
+
+| | |
+| --- | --- |
+| **Different every trip** | The itinerary, the rail-pass maths, the local specifics |
+| **The same every trip** | What to ask, what to check, and in what order |
+
+### Path B — one finished plan per destination
+
+Build each destination once, sell it as a package or a service. Custom trip planning is already a
+paid service in the Chinese-speaking travel market; what it lacks is a tool that makes each
+plan reusable instead of hand-built every time.
+
+### The trade-off
+
+| | **A — Skill** | **B — Finished plans** |
+| --- | --- | --- |
+| What the buyer gets | Inputs → a plan | A finished plan for one place |
+| Depth | **Unproven** | Guaranteed — a human researched it |
+| Scale | High | One build per destination |
+| Time to first revenue | Longer | Shorter |
+| Main risk | The method may not transfer | It doesn't scale |
+
+**They are not exclusive. We are going to run B first** — it proves people pay, and each
+destination built by hand becomes training material for A. A is where the margin is, if the
+method holds.
+
+## 05. Phased plan — gated on evidence, not dates
+
+Each phase has an explicit entry condition. If the condition isn't met, the next phase
+doesn't start.
+
+| Phase | When | What | Entry condition |
+| --- | --- | --- | --- |
+| **Idea** | Jun 2026 | **Frame the problem** — existing tools cover 10% of a trip; find what the other 90% is | — |
+| **PoC** | Jul 2026 | **Build** — itinerary, pre-trip checklist, booking states, budget model, map | Problem defined and scoped |
+| **Pilot** ← *current* | 17–27 Jul 2026 | **Switzerland** — 4 people, 9 days, 6 regions, real bookings, real money | Tool complete enough to depend on in the field |
+| **Production** | Late Oct 2026 | **Path B** — one finished plan per destination, sold as a package or a service | Pilot held up in the field without falling back to spreadsheets ✅ |
+| **Benefit realization** | Nov 2026 | **Path A** — the skill: inputs → a live planning website | Paying customers on B, and enough hand-built destinations to encode the method |
+
+**Production is unblocked.** Its entry condition was met when the Switzerland trip ended —
+what is missing is not evidence, it is a first destination package and a first buyer.
 
 ## My Role
 
-**Product & trip planning** — problem framing, what the tool optimises for (leave days over
-calendar days), the budget and split model, ticket and booking states, retrospective design,
-and the itinerary itself.
+**Product & trip planning**
 
 **Iris.H — build & UI.** The implementation and interface are hers; the
 [repository](https://github.com/ralinzain-star/Switzerland) is under her account.
